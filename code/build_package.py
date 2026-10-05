@@ -9,8 +9,8 @@ D = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/'
 PKG = D + '投稿包_DSFE/'
 CODE = D + '資訊階梯分析_程式與圖表/'
 FONT = 'Times New Roman'
-FIG_ORDER = ['f1_overview.png', 'r1_ladder.png', 'r2_decomp.png', 'r3_pred.png', 'r4_regime.png',
-             'r5_econ.png', 'r7_asset2.png', 'r8_spec.png', 'r6_shap_granger.png']
+import md2docx as _M
+FIG_ORDER = [fn for _, fn, _ in _M.FIGMAP]   # single source of truth: the manuscript build
 
 for sub in ('', 'figures/', 'supplementary/', 'supplementary/code/', 'supplementary/data/'):
     os.makedirs(PKG + sub, exist_ok=True)
@@ -51,7 +51,7 @@ def letter():
       'reverses the sign of that component, which is reported as it stands.', align='justify')
     p('The work relates closely to Chassot and Audrino (2026), who hold the information set fixed and vary the fitting '
       'scheme, and who leave richer information sets to future research. This paper takes that step: it fixes the '
-      'fitting scheme, varies the information set, and decomposes the difference. Section 8.3 reports that the '
+      'fitting scheme, varies the information set, and decomposes the difference. Section 8.6 reports that the '
       're-estimation frequency decisive in their one-day setting is immaterial at the five-day horizon studied here.', align='justify')
     p('The manuscript fits the journal\'s scope in data science methods and applications in finance. All code, the '
       'daily derived series and a locked environment specification are supplied as supplementary material so that '
@@ -74,12 +74,23 @@ shutil.copy(D + 'Chou_2026_information_or_architecture.docx', PKG + '04_manuscri
 for i, f in enumerate(FIG_ORDER, 1):
     shutil.copy(CODE + 'fig/' + f, PKG + f'figures/Figure{i}.png')
 shutil.copy(CODE + 'ENVIRONMENT.md', PKG + 'supplementary/ENVIRONMENT.md')
+# The document-production and reference-checking scripts carry the author's name, e-mail and local
+# paths, so they are withheld from the review copy; they reproduce the Word files, not the results.
+DOC_SCRIPTS = {'md2docx.py', 'eqfix.py', 'make_anon.py', 'build_package.py', 'build_repo.py',
+               'submission_check.py', 'refcheck.py', 'refcheck2.py', 'refcross.py', 'docx_helpers.py',
+               'build_report2.py'}
+IDENT = ('J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/', 'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒')
 for f in os.listdir(CODE):
-    if f.endswith('.py'): shutil.copy(CODE + f, PKG + 'supplementary/code/' + f)
+    if not f.endswith('.py') or f in DOC_SCRIPTS: continue
+    src = open(CODE + f, encoding='utf-8').read()
+    for pat in IDENT: src = src.replace(pat, './')          # strip the author's local path
+    open(PKG + 'supplementary/code/' + f, 'w', encoding='utf-8').write(src)
 for f in os.listdir(CODE):
     if f.endswith(('.csv', '.json')): shutil.copy(CODE + f, PKG + 'supplementary/data/' + f)
 for f in os.listdir(CODE + 'predictions'):
     if f.endswith('.csv'): shutil.copy(CODE + 'predictions/' + f, PKG + 'supplementary/data/' + f)
+for f in os.listdir(CODE + 'data'):                      # the daily derived series the README promises
+    if f.endswith(('.csv', '.json')): shutil.copy(CODE + 'data/' + f, PKG + 'supplementary/data/' + f)
 
 doc = Document(PKG + '01_manuscript_anonymised.docx')
 body = '\n'.join(p.text for p in doc.paragraphs)
@@ -113,8 +124,10 @@ Prepared: {datetime.date.today()}
 
 ## Supplementary contents
 
-- `code/` — every script used, from raw data to the final tables: data construction, the four levels, evaluation,
-  Granger tests, attributions, the reproducibility experiments and the document build.
+- `code/` — every script needed to reproduce the results: data construction, the four levels, evaluation,
+  Granger tests, attributions and the reproducibility experiments. The scripts that build the Word files and
+  check the reference list are withheld from this copy because they contain the author's details; they are in
+  the public repository released with the paper. Paths have been made relative.
 - `data/` — daily derived series, all result tables, and the forecast series for every model and seed, so that each
   table in the paper can be recomputed without the one-minute source data.
 - `ENVIRONMENT.md` — the locked software environment, including the two PyTorch builds discussed in Section 7.
