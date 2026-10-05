@@ -64,7 +64,8 @@ interest rates and the dollar index come from FRED, and ETF prices from Yahoo Fi
 
 ## Citing
 
-See `CITATION.cff`. The archived release carries a DOI issued by Zenodo.
+See `CITATION.cff`. Please cite the paper; this repository is referenced through the data availability
+statement in the article.
 
 ## Licence
 
