@@ -27,7 +27,7 @@ code/        every script, from raw data to the final document
 data/        daily derived series, predictor groups, forecast series by model and seed
 results/     all result tables (CSV/JSON) reported in the paper
 figures/     Figure 1-9 as published
-ENVIRONMENT.md   locked software environment, including the two PyTorch builds compared in Section 7.2
+ENVIRONMENT.md   locked software environment, including the two PyTorch builds compared in Section 7
 ```
 
 ## Reproducing the results
@@ -64,8 +64,7 @@ interest rates and the dollar index come from FRED, and ETF prices from Yahoo Fi
 
 ## Citing
 
-See `CITATION.cff`. Please cite the paper; this repository is referenced through the data availability
-statement in the article.
+See `CITATION.cff`.
 
 ## Licence
 

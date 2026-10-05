@@ -7,6 +7,8 @@ from docx.oxml.ns import qn
 import md2docx as M
 
 OUT_ANON = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/Chou_2026_anonymised_manuscript.docx'
+ANON = 'https://anonymous.4open.science/r/volatility-decomposition-protocol-E6EC'
+GH = 'https://github.com/jerome-maker/volatility-decomposition-protocol'
 OUT_TITLE = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/Chou_2026_title_page.docx'
 
 # 1) anonymised body: same converter, author block replaced, identifying links removed
@@ -19,9 +21,10 @@ def anon_main():
     for p in list(d.paragraphs):
         if any(k in p.text for k in kill):
             p._element.getparent().remove(p._element)
-    for p in d.paragraphs:                      # replace any repository or environment link
-        if 'anonymous' in p.text.lower() or 'github' in p.text.lower():
-            for r in p.runs: r.text = r.text.replace('github.com', '[anonymised repository]')
+    for p in d.paragraphs:                      # the review copy points at the anonymised mirror
+        for r in p.runs:
+            if 'github.com' in r.text:
+                r.text = r.text.replace(GH, ANON)
     d.save(OUT_ANON)
 anon_main()
 
@@ -43,8 +46,8 @@ para('E-mail: jerome.chou@mail.ntust.edu.tw', 11, after=20)
 for line in ['Corresponding author: Jerome Chih-Lung Chou.',
              'Funding: This research received no external funding.',
              'Conflicts of interest: The author declares no conflicts of interest.',
-             'Data availability: The daily derived series and all code required to reproduce the results are available at the repository cited in the manuscript. The one-minute bars were obtained from the HF Data Library; the portion from March 2022 onward derives from IEX Exchange HIST and is freely redistributable, while the earlier portion comes from a commercial feed and cannot be redistributed.',
-             'Declaration of generative AI use: Generative AI tools were used for code drafting, language editing and manuscript preparation. The author reviewed and verified all analyses, numbers and claims and takes full responsibility for the content.']:
+             'Data availability: All code and the daily derived series are available at ' + GH + '. For double-blind review an anonymised mirror is provided at ' + ANON + ', which is the link given in the review copy of the manuscript. The one-minute bars were obtained from the HF Data Library; the portion from March 2022 onward derives from IEX Exchange HIST and is freely redistributable, while the earlier portion comes from a commercial feed and cannot be redistributed.',
+             'Declaration of generative AI use: Generative AI tools (Claude, Anthropic) were used for code drafting, data processing, drafting of the manuscript text, language editing and document preparation, and in discussing analytical choices. All research decisions, analyses and interpretations were made and verified by the author, who takes full responsibility for the content.']:
     para(line, 11, align='left', after=10)
 t.save(OUT_TITLE)
 print('saved anonymised manuscript and title page')

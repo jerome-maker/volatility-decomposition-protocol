@@ -15,7 +15,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-SRC = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/論文草稿_全文.md'
+SRC = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/論文草稿_全文_精簡.md'
 FIGDIR = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/資訊階梯分析_程式與圖表/fig'
 OUT = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/Chou_2026_information_or_architecture.docx'
 FONT = 'Times New Roman'
@@ -26,26 +26,25 @@ def latex_omml(latex):
     """LaTeX -> MathML -> OMML, so that inline maths is an editable Word equation."""
     return copy.deepcopy(_TRANSFORM(etree.fromstring(_l2m.convert(latex).encode())).getroot())
 
-ABSTRACT = ("Comparisons between deep learning and econometric models in financial forecasting rarely hold the "
- "information set fixed, so a reported gain may reflect richer inputs rather than a better model. We propose a "
- "decomposition protocol that splits the out-of-sample gain into three exhaustive components—the value of "
- "high-frequency information, the value of exogenous forward-looking information, and the value of the nonlinear "
- "architecture—by constructing a ladder of models in which the deep learning model and its linear counterpart "
- "receive exactly the same inputs. We apply the protocol to five-day realized volatility of the SPDR S&P 500 ETF "
- "using one-minute data and option-implied indices, with a second application to the Invesco QQQ ETF. Over 2023 to "
- "2025, exogenous option-implied information is the only component that improves QLIKE significantly, by 0.048. "
- "Holding the information set fixed, the Transformer is 0.024 worse than the linear model with identical inputs and "
- "is not significantly better than any benchmark; an LSTM control trained under the same protocol is likewise no "
- "better than the linear model, although it significantly outperforms the Transformer. Forward-looking information "
- "contributes only within the heterogeneous autoregressive framework; in the GARCH variance equation its "
- "coefficients are estimated at zero. Statistical and economic rankings diverge: the model with the lowest QLIKE "
- "does not deliver the highest Sharpe ratio under volatility targeting, and all models pass value-at-risk backtests "
- "indistinguishably. We further show that the measured architecture effect is fragile to implementation choices "
- "that are seldom reported: five random seeds are insufficient for significance claims, and changing the deep "
- "learning library version moves the loss by the same magnitude as the architecture effect itself. We therefore "
- "recommend information-parity designs, ten-seed ensembles, and version pinning as minimum standards for this "
- "literature. In a hold-out year reserved before the design was frozen the architecture component changes sign, "
- "which reinforces rather than overturns that conclusion.")
+ABSTRACT = (
+ "Comparisons between deep learning and econometric models in financial forecasting rarely hold the information "
+ "set fixed, so a reported gain may reflect richer inputs rather than a better model. We propose a decomposition "
+ "protocol that splits the out-of-sample gain into three exhaustive components—the value of high-frequency "
+ "information, of exogenous forward-looking information, and of the nonlinear architecture—by building a ladder "
+ "in which the deep learning model and its linear counterpart receive identical inputs. We apply it to five-day "
+ "realized volatility of the SPDR S&P 500 ETF using one-minute data and option-implied indices, with a second "
+ "application to the Invesco QQQ ETF. Over 2023 to 2025, exogenous option-implied information is the only "
+ "component that improves QLIKE significantly, by 0.048. Holding the information set fixed, the Transformer is "
+ "0.024 worse than the linear model and is not significantly better than any benchmark; an LSTM control is "
+ "likewise no better, although it outperforms the Transformer. Forward-looking information contributes only "
+ "within the heterogeneous autoregressive framework; in the GARCH variance equation its coefficients are "
+ "estimated at zero. Statistical and economic rankings diverge: the model with the lowest QLIKE does not deliver "
+ "the highest Sharpe ratio under volatility targeting, and all models pass value-at-risk backtests "
+ "indistinguishably. The measured architecture effect is also fragile to choices that are seldom reported: five "
+ "random seeds are insufficient for significance claims, and changing the deep learning library version moves "
+ "the loss by the same magnitude as the effect itself. In a hold-out year reserved before the design was frozen "
+ "the architecture component changes sign, which reinforces that conclusion. We recommend information-parity "
+ "designs, ten-seed ensembles and version pinning as minimum standards.")
 KEYWORDS = ("realized volatility; implied volatility term structure; HAR model; Transformer; forecast evaluation; "
             "reproducibility; random seed variation")
 # figures are placed at the end of the section whose number appears here
@@ -54,10 +53,10 @@ FIGMAP = [('4', 'f1_overview.png', 'SPY 22-day realized volatility and the sampl
           ('5', 'r2_decomp.png', 'Decomposition of the QLIKE gain with 90% block bootstrap intervals.'),
           ('5', 'r3_pred.png', 'Forecasts and realized volatility over the evaluation period; lower panel zooms on April 2025.'),
           ('5', 'r4_regime.png', 'QLIKE by market condition.'),
+          ('5', 'r6_shap_granger.png', 'Attribution shares (left) and attribution against predictive precedence (right).'),
           ('6', 'r5_econ.png', 'Volatility-targeted portfolios (left) and 5% value-at-risk violation rates (right).'),
-          ('8', 'r7_asset2.png', 'Second application: QLIKE by level (left) and decomposition (right) for QQQ and SPY.'),
-          ('8', 'r8_spec.png', 'Seed-level comparison of the two cross-asset parameterizations.'),
-          ('9', 'r6_shap_granger.png', 'Attribution shares (left) and attribution against predictive precedence (right).')]
+          ('7', 'r8_spec.png', 'Seed-level comparison of the two cross-asset parameterizations.'),
+          ('8', 'r7_asset2.png', 'Second application: QLIKE by level (left) and decomposition (right) for QQQ and SPY.')]
 
 def setfont(run, size=12, bold=False, italic=False, color=None):
     run.font.name = FONT; run._element.rPr.rFonts.set(qn('w:eastAsia'), FONT)
@@ -150,12 +149,15 @@ def main():
     lines = md.split('\n')
     i = 0; tab_n = 0; eq_n = 0; cur_sec = '0'; pending_caption = None
     fig_counter = 0
+    placed = set()
     def flush_figs(section):
         nonlocal fig_counter
         for sec_no, fname, cap in FIGMAP:
-            if sec_no != section: continue
+            if sec_no != section or fname in placed: continue
+            placed.add(fname)
             path = os.path.join(FIGDIR, fname)
-            if not os.path.exists(path): continue
+            if not os.path.exists(path):
+                raise FileNotFoundError(f'figure file missing: {path}')
             fig_counter += 1
             doc.add_picture(path, width=Cm(15.5))
             doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -219,8 +221,9 @@ def main():
         body(doc, ln.strip())
         i += 1
     flush_figs(cur_sec)
-    for s in ('9',):                                            # figures attached to section 9 if not yet placed
-        pass
+    for sec_no, fname, cap in FIGMAP:                            # anything the section sweep missed
+        if fname not in placed: flush_figs(sec_no)
+    assert len(placed) == len(FIGMAP), f'figures not placed: {[f for _, f, _ in FIGMAP if f not in placed]}'
     doc.save(OUT)
     print('saved', OUT)
     print(f'tables: {tab_n} | equations: {eq_n} | figures: {fig_counter}')
