@@ -51,12 +51,12 @@ KEYWORDS = ("realized volatility; implied volatility term structure; HAR model; 
 FIGMAP = [('4', 'f1_overview.png', 'SPY 22-day realized volatility and the sample split.'),
           ('5', 'r1_ladder.png', 'Out-of-sample QLIKE and RMSE by level.'),
           ('5', 'r2_decomp.png', 'Decomposition of the QLIKE gain with 90% block bootstrap intervals.'),
-          ('5', 'r3_pred.png', 'Forecasts and realized volatility over the evaluation period; lower panel zooms on April 2025.'),
           ('5', 'r4_regime.png', 'QLIKE by market condition.'),
-          ('5', 'r6_shap_granger.png', 'Attribution shares (left) and attribution against predictive precedence (right).'),
+          ('5', 'r3_pred.png', 'Forecasts and realized volatility over the evaluation period; lower panel zooms on April 2025.'),
           ('6', 'r5_econ.png', 'Volatility-targeted portfolios (left) and 5% value-at-risk violation rates (right).'),
-          ('7', 'r8_spec.png', 'Seed-level comparison of the two cross-asset parameterizations.'),
-          ('8', 'r7_asset2.png', 'Second application: QLIKE by level (left) and decomposition (right) for QQQ and SPY.')]
+          ('8', 'r7_asset2.png', 'Second application: QLIKE by level (left) and decomposition (right) for QQQ and SPY.'),
+          ('8', 'r8_spec.png', 'Seed-level comparison of the two cross-asset parameterizations.'),
+          ('9', 'r6_shap_granger.png', 'Attribution shares (left) and attribution against predictive precedence (right).')]
 
 def setfont(run, size=12, bold=False, italic=False, color=None):
     run.font.name = FONT; run._element.rPr.rFonts.set(qn('w:eastAsia'), FONT)
