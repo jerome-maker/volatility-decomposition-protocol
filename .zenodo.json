@@ -1,0 +1,22 @@
+{
+  "title": "Information or architecture? A decomposition protocol for evaluating deep learning gains in volatility forecasting",
+  "upload_type": "software",
+  "description": "Replication material for a paper that decomposes the out-of-sample gain of deep learning in volatility forecasting into the value of high-frequency information, the value of exogenous forward-looking information, and the value of the nonlinear architecture, holding the information set fixed between the deep learning model and its linear counterpart.",
+  "creators": [
+    {
+      "name": "Chou, Jerome Chih-Lung",
+      "affiliation": "National Taiwan University of Science and Technology"
+    }
+  ],
+  "keywords": [
+    "realized volatility",
+    "forecast evaluation",
+    "information set parity",
+    "Transformer",
+    "HAR model",
+    "reproducibility",
+    "QLIKE"
+  ],
+  "license": "MIT",
+  "access_right": "open"
+}

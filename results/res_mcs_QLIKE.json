@@ -1,0 +1,1 @@
+{"loss": "QLIKE", "alive": ["L1 GARCH(1,1)", "L1 GJR-GARCH", "L2 HAR-RV", "L3 HAR-RV-X (opt only)", "L3 HAR-RV-X (full)", "L3 GARCH-X", "L4 Transformer"]}

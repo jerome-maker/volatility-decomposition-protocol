@@ -1,0 +1,16 @@
+"""SHAR (signed semivariance HAR, Patton-Sheppard 2015) check: is the negative Delta_HF due to HAR lacking asymmetry?"""
+import pandas as pd, numpy as np, pickle
+df=pd.read_parquet('spy1m.parquet'); df['date']=df.datetime.dt.normalize()
+df['b5']=df.datetime.dt.floor('5min')
+c5=df.groupby(['date','b5']).Close.last(); op=df.groupby('date').Open.first()
+lp=np.log(c5); r5=lp.groupby(level=0).diff()
+first=lp.groupby(level=0).head(1)
+r5.loc[first.index]=first.values-np.log(op.reindex(first.index.get_level_values(0)).values)
+g=r5.groupby(level=0)
+rs_pos=g.apply(lambda x:(x[x>0]**2).sum()); rs_neg=g.apply(lambda x:(x[x<0]**2).sum())
+S=pd.DataFrame({'rs_pos':rs_pos,'rs_neg':rs_neg})
+D=pd.read_parquet('analysis_daily.parquet')
+S=S.reindex(D.index)
+D['lrs_pos']=np.log(252*S.rs_pos+1e-8)
+D.to_parquet('analysis_daily.parquet')
+print('rs_pos added', D.lrs_pos.describe().round(3).to_dict())

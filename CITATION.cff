@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "Information or architecture? A decomposition protocol for evaluating deep learning gains in volatility forecasting"
+message: "If you use this material, please cite the paper and this archive."
+type: software
+authors:
+  - family-names: Chou
+    given-names: Jerome Chih-Lung
+    affiliation: "Graduate Institute of Finance, National Taiwan University of Science and Technology"
+    email: jerome.chou@mail.ntust.edu.tw
+keywords:
+  - realized volatility
+  - forecast evaluation
+  - information set parity
+  - Transformer
+  - HAR model
+  - reproducibility
+license: MIT
+date-released: "2026-10-05"
