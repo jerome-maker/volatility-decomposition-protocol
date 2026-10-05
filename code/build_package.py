@@ -51,7 +51,7 @@ def letter():
       'reverses the sign of that component, which is reported as it stands.', align='justify')
     p('The work relates closely to Chassot and Audrino (2026), who hold the information set fixed and vary the fitting '
       'scheme, and who leave richer information sets to future research. This paper takes that step: it fixes the '
-      'fitting scheme, varies the information set, and decomposes the difference. Section 8.6 reports that the '
+      'fitting scheme, varies the information set, and decomposes the difference. Section 8.3 reports that the '
       're-estimation frequency decisive in their one-day setting is immaterial at the five-day horizon studied here.', align='justify')
     p('The manuscript fits the journal\'s scope in data science methods and applications in finance. All code, the '
       'daily derived series and a locked environment specification are supplied as supplementary material so that '
@@ -59,8 +59,7 @@ def letter():
     p('I confirm that the manuscript has not been published elsewhere and is not under consideration by another '
       'journal, that it will be published in open access format, and that permission has been obtained for all '
       'reproduced material. I am not suggesting reviewers, and leave the choice to the editorial board.', align='justify')
-    p('Generative AI tools were used for code drafting, language editing and manuscript preparation. I reviewed and '
-      'verified all analyses, numbers and claims, and take full responsibility for the content.', align='justify')
+    p('Generative AI tools (Claude, Anthropic) were used for code drafting, data processing, drafting of the manuscript text, language editing and document preparation, and in discussing analytical choices. All research decisions, analyses and interpretations were made and verified by me, and I take full responsibility for the content.', align='justify')
     p('Thank you for considering this submission.', after=18, align='justify')
     p('Yours sincerely,', after=24)
     p('Jerome Chih-Lung Chou', after=2)
@@ -118,11 +117,13 @@ Prepared: {datetime.date.today()}
   Granger tests, attributions, the reproducibility experiments and the document build.
 - `data/` — daily derived series, all result tables, and the forecast series for every model and seed, so that each
   table in the paper can be recomputed without the one-minute source data.
-- `ENVIRONMENT.md` — the locked software environment, including the two PyTorch builds discussed in Section 7.2.
+- `ENVIRONMENT.md` — the locked software environment, including the two PyTorch builds discussed in Section 7.
 
 ## Before uploading
 
-1. Replace the placeholder repository link in the manuscript with the anonymous repository URL.
+1. The anonymised manuscript already points at the anonymous mirror
+   (https://anonymous.4open.science/r/volatility-decomposition-protocol-E6EC); the named version points at the
+   GitHub repository, which stays private until the paper is accepted.
 2. Confirm the submission system accepts the figures separately; if figures must be embedded only, they already are.
 3. Submit through JAMS at aimspress.jams.pub. The article processing charge is USD 0.
 """
