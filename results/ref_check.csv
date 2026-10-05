@@ -1,0 +1,43 @@
+key,sim,matched,first_author,n_authors,journal,year,vol,page,doi,type
+Aas et al. 2021,1.0,Explaining individual predictions when features are dependent: More ac,Aas,3,Artificial Intelligence,2021.0,298,103502,10.1016/j.artint.2021.103502,journal-article
+Andersen et al. 2003,1.0,Modeling and Forecasting Realized Volatility,Andersen,4,,2001.0,,,10.3386/w8160,report
+Barndorff-Nielsen & Shephard 2004,1.0,Power and Bipower Variation with Stochastic Volatility and Jumps,Barndorff-Nielsen,1,Journal of Financial Econometrics,2004.0,2,1-37,10.1093/jjfinec/nbh001,journal-article
+Bucci 2020,1.0,Realized Volatility Forecasting with Neural Networks,Bucci,1,Journal of Financial Econometrics,2020.0,18,502-531,10.1093/jjfinec/nbaa008,journal-article
+Busch et al. 2011,1.0,The Role of Implied Volatility in Forecasting Future Realized Volatili,Busch,3,,2008.0,,,10.2139/ssrn.1148738,posted-content
+Christensen & Prabhala 1998,1.0,The Relation between Implied and Realized Volatility,Earl,1,CFA Digest,1999.0,29,80-81,10.2469/dig.v29.n3.534,journal-article
+Christensen et al. 2023,0.88,Correction to: A Machine Learning Approach to Volatility Forecasting,?,0,Journal of Financial Econometrics,2022.0,23,,10.1093/jjfinec/nbac032,journal-article
+Christoffersen 1998,1.0,Evaluating Interval Forecasts,Christoffersen,1,International Economic Review,1998.0,39,841,10.2307/2527341,journal-article
+Clark & West 2007,1.0,Approximately Normal Tests for Equal Predictive Accuracy in Nested Mod,West,2,,2006.0,,,10.3386/t0326,report
+Corsi 2009,1.0,A Simple Approximate Long-Memory Model of Realized Volatility,Corsi,1,Journal of Financial Econometrics,2008.0,7,174-196,10.1093/jjfinec/nbp001,journal-article
+Diebold & Mariano 1995,1.0,Comparing Predictive Accuracy,Diebold,2,,1994.0,,,10.3386/t0169,report
+Dufour & Renault 1998,1.0,Short Run and Long Run Causality in Time Series: Theory,Dufour,2,Econometrica,1998.0,66,1099,10.2307/2999631,journal-article
+Engle 1982,1.0,Autoregressive Conditional Heteroscedasticity with Estimates of the Va,Engle,1,Arch,1995.0,,1-23,10.1093/oso/9780198774310.003.0001,book-chapter
+Engle & Bollerslev 1986,1.0,Modelling the persistence of conditional variances,Engle,2,Econometric Reviews,1986.0,5,1-50,10.1080/07474938608800095,journal-article
+Engle & Manganelli 2004,0.75,Risk Estimation of Karachi Stock Exchange via Conditional Autoregressi,Iqbal,1,The Nucleus,2017.0,53,128-133,10.71330/thenucleus.2016.224,journal-article
+Fleming et al. 2003,0.98,The Economic Value of Volatility Timing Using 'Realized' Volatility,Fleming,3,,2001.0,,,10.2139/ssrn.276921,posted-content
+Giacomini & White 2006,0.75,Tests of Conditional Predictive Ability: Some Simulation Evidence,McCracken,1,,2019.0,,,10.20955/wp.2019.011,report
+Glosten et al. 1993,1.0,On the Relation Between the Expected Value and the Volatility of the N,Glosten,3,,1992.0,,,10.21034/wp.505,posted-content
+Granger 1969,1.0,Investigating Causal Relations by Econometric Models and Cross-spectra,Granger,1,Econometrica,1969.0,37,424,10.2307/1912791,journal-article
+Gu et al. 2020,1.0,Empirical Asset Pricing via Machine Learning,Gu,3,,2018.0,,,10.3386/w25398,report
+Hansen 2005,1.0,A Test for Superior Predictive Ability,Hansen,1,,2004.0,,,10.2139/ssrn.264569,posted-content
+Hansen & Lunde 2005,1.0,A Forecast Comparison of Volatility Models: Does Anything Beat a Garch,Hansen,2,,2001.0,,,10.2139/ssrn.264571,posted-content
+Hansen et al. 2011,1.0,The Model Confidence Set,?,0,Econometrica,2011.0,79,453-497,10.3982/ecta5771,journal-article
+Harvey et al. 1997,1.0,Testing the equality of prediction mean squared errors,Harvey,3,International Journal of Forecasting,1997.0,13,281-291,10.1016/s0169-2070(96)00719-4,journal-article
+Hochreiter & Schmidhuber 1997,0.8,Figure 4: Long short-term memory.,?,0,,,,,10.7717/peerjcs.216/fig-4,component
+Jain & Wallace 2019,0.46,Language Processing and Linguistic Explanation,?,0,Attention and Performance XII,2016.0,,695-710,10.4324/9781315630427-46,book-chapter
+Kunsch 1989,1.0,The Jackknife and the Bootstrap for General Stationary Observations,Kunsch,1,The Annals of Statistics,1989.0,17,,10.1214/aos/1176347265,journal-article
+Kumar et al. 2020,0.5,Low-complexity Anomaly Detection Method based on Feature Importance us,Rheey,2,2023 Fourteenth International Conference o,2023.0,,885-888,10.1109/icufn57995.2023.10200885,proceedings-article
+Kupiec 1995,1.0,Techniques for Verifying the Accuracy of Risk Measurement Models,Kupiec,1,The Journal of Derivatives,1995.0,3,73-84,10.3905/jod.1995.407942,journal-article
+Lim et al. 2021,1.0,Temporal Fusion Transformers for interpretable multi-horizon time seri,Lim,4,International Journal of Forecasting,2021.0,37,1748-1764,10.1016/j.ijforecast.2021.03.012,journal-article
+Lundberg & Lee 2017,0.5,Interpreting Uncertainty in Model Predictions for Covid-19 Diagnosis,Murugamoorthy,2,,2023.0,,,10.32920/22734407,posted-content
+Moreira & Muir 2017,1.0,Volatility-Managed Portfolios,Moreira,2,,2015.0,,,10.2139/ssrn.2659431,posted-content
+Patton 2011,1.0,Volatility Forecast Comparison Using Imperfect Volatility Proxies,Patton,1,,2010.0,,,10.2139/ssrn.932890,posted-content
+Patton & Sheppard 2015,1.0,"Good Volatility, Bad Volatility: Signed Jumps and The Persistence of V",Patton,2,Review of Economics and Statistics,2015.0,97,683-697,10.1162/rest_a_00503,journal-article
+Rudin 2019,1.0,Stop explaining black box machine learning models for high stakes deci,Rudin,1,Nature Machine Intelligence,2019.0,1,206-215,10.1038/s42256-019-0048-x,journal-article
+Toda & Yamamoto 1995,1.0,Statistical inference in vector autoregressions with possibly integrat,Toda,2,Journal of Econometrics,1995.0,66,225-250,10.1016/0304-4076(94)01616-8,journal-article
+Vaswani et al. 2017,0.86,Is Attention All You Need?,Mineault,1,From Human Attention to Computational Atte,2025.0,,297-314,10.1007/978-3-031-84300-6_13,book-chapter
+White 2000,1.0,A Reality Check for Data Snooping,White,1,Econometrica,2000.0,68,1097-1126,10.1111/1468-0262.00152,journal-article
+Zeng et al. 2023,1.0,Are Transformers Effective for Time Series Forecasting?,Zeng,4,Proceedings of the AAAI Conference on Arti,2023.0,37,11121-11128,10.1609/aaai.v37i9.26317,journal-article
+Kapoor & Narayanan 2023,1.0,Leakage and the reproducibility crisis in machine-learning-based scien,Kapoor,2,Patterns,2023.0,4,100804,10.1016/j.patter.2023.100804,journal-article
+Pineau et al. 2021,0.76,"Improving Reproducibility in Machine Learning: Overview, Barriers, and",Mzyece,1,,2026.0,,,10.36227/techrxiv.177155769.94899097/v1,posted-content
+Gundersen & Kjensmo 2018,1.0,State of the Art: Reproducibility in Artificial Intelligence,Gundersen,2,Proceedings of the AAAI Conference on Arti,2018.0,32,,10.1609/aaai.v32i1.11503,journal-article

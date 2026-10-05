@@ -1,0 +1,20 @@
+key,journal,year,vol,page,doi,first,n,title
+Andersen et al. 2003,Econometrica,2003,71,579-625,10.1111/1468-0262.00418,Andersen,4,Modeling and Forecasting Realized Volatility
+Busch et al. 2011,Journal of Econometrics,2011,160,48-57,10.1016/j.jeconom.2010.03.014,Busch,3,The role of implied volatility in forecasting future
+Christensen & Prabhala 1998,Journal of Financial Economics,1998,50,125-150,10.1016/s0304-405x(98)00034-8,Christensen,2,The relation between implied and realized volatility
+Clark & West 2007,Journal of Econometrics,2007,138,291-311,10.1016/j.jeconom.2006.05.023,Clark,2,Approximately normal tests for equal predictive accu
+Diebold & Mariano 1995,Journal of Business &amp; Economic Stati,1995,13,253-263,10.1080/07350015.1995.10524599,Diebold,2,Comparing Predictive Accuracy
+Engle 1982,Econometrica,1982,50,987,10.2307/1912773,Engle,1,Autoregressive Conditional Heteroscedasticity with E
+Engle & Manganelli 2004,International Journal of Business Foreca,2020,6,238,10.1504/ijbfmi.2020.111376,Albuquerque,4,Conditional autoregressive value-at-risk: all flavou
+Fleming et al. 2003,Journal of Financial Economics,2003,67,473-509,10.1016/s0304-405x(02)00259-3,Fleming,3,The economic value of volatility timing using “reali
+Giacomini & White 2006,Econometrica,2006,74,1545-1578,10.1111/j.1468-0262.2006.00718.x,Giacomini,2,Tests of Conditional Predictive Ability
+Glosten et al. 1993,The Journal of Finance,1993,48,1779-1801,10.1111/j.1540-6261.1993.tb05128.x,GLOSTEN,3,On the Relation between the Expected Value and the V
+Gu et al. 2020,The Review of Financial Studies,2020,33,2223-2273,10.1093/rfs/hhaa009,Gu,3,Empirical Asset Pricing via Machine Learning
+Hansen 2005,Journal of Business &amp; Economic Stati,2005,23,365-380,10.1198/073500105000000063,Hansen,1,A Test for Superior Predictive Ability
+Hansen & Lunde 2005,Journal of Applied Econometrics,2005,20,873-889,10.1002/jae.800,Hansen,2,A forecast comparison of volatility models: does any
+Hochreiter & Schmidhuber 1997,Neural Computation,1997,9,1735-1780,10.1162/neco.1997.9.8.1735,Hochreiter,2,Long Short-Term Memory
+Moreira & Muir 2017,The Journal of Finance,2017,72,1611-1644,10.1111/jofi.12513,MOREIRA,2,Volatility‐Managed Portfolios
+Patton 2011,Journal of Econometrics,2011,160,246-256,10.1016/j.jeconom.2010.03.034,Patton,1,Volatility forecast comparison using imperfect volat
+Christensen et al. 2023,Journal of Financial Econometrics,2022,21,1680-1727,10.1093/jjfinec/nbac020,Christensen,3,A Machine Learning Approach to Volatility Forecastin
+Pineau et al. 2021,Journal of Geophysical Research: Machine,2025,2,,10.1029/2025jh000640,Zhang,4,Improving PM<sub>2.5</sub> and Visibility Prediction
+Corsi 2009,Journal of Financial Econometrics,2008,7,174-196,10.1093/jjfinec/nbp001,Corsi,1,A Simple Approximate Long-Memory Model of Realized V
