@@ -10,15 +10,16 @@ from lxml import etree
 import latex2mathml.converter as _l2m
 from docx import Document
 from docx.shared import Pt, Cm, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING, WD_TAB_ALIGNMENT
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-SRC = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/論文草稿_全文_精簡.md'
+SRC = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/論文草稿_投稿版.md'
 FIGDIR = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/資訊階梯分析_程式與圖表/fig'
 OUT = r'J:/我的雲端硬碟/2026工作區/指導學生/柳宇軒/Chou_2026_information_or_architecture.docx'
 FONT = 'Times New Roman'
+TAB = chr(9)
 _XSL = r'C:/Program Files/Microsoft Office/root/Office16/MML2OMML.XSL'
 _TRANSFORM = etree.XSLT(etree.parse(_XSL))
 
@@ -78,31 +79,43 @@ def add_runs(p, text, size=12):
             elif chunk.startswith('*') and chunk.endswith('*'): setfont(p.add_run(chunk[1:-1]), size, italic=True)
             else: setfont(p.add_run(chunk), size)
 
-def body(doc, text, size=12, align=None, space_after=6, indent=None):
+def body(doc, text, size=12, align=None, space_after=6, indent=None, first_line=False):
     p = doc.add_paragraph()
     pf = p.paragraph_format
-    pf.line_spacing = Pt(18); pf.space_after = Pt(space_after)
+    pf.line_spacing = Pt(15); pf.line_spacing_rule = WD_LINE_SPACING.AT_LEAST
+    pf.space_after = Pt(space_after)
+    if first_line: pf.first_line_indent = Cm(0.84)
     if indent: pf.left_indent = Cm(indent)
     if align == 'center': p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     else: p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     add_runs(p, text, size)
     return p
 
-def shade(cell, hexcol):
-    tcPr = cell._tc.get_or_add_tcPr(); sh = OxmlElement('w:shd')
-    sh.set(qn('w:val'), 'clear'); sh.set(qn('w:color'), 'auto'); sh.set(qn('w:fill'), hexcol); tcPr.append(sh)
+def rule(row, edges, size=8):
+    """Draw only the horizontal rules a three-line table needs."""
+    for c in row.cells:
+        tcPr = c._tc.get_or_add_tcPr()
+        for old in tcPr.findall(qn('w:tcBorders')): tcPr.remove(old)
+        b = OxmlElement('w:tcBorders')
+        for edge in ('top', 'bottom', 'left', 'right'):
+            e = OxmlElement('w:' + edge)
+            on = edge in edges
+            e.set(qn('w:val'), 'single' if on else 'nil')
+            if on: e.set(qn('w:sz'), str(size)); e.set(qn('w:color'), '000000')
+            b.append(e)
+        tcPr.append(b)
 
 def md_table(doc, rows):
     header, data = rows[0], rows[1:]
     t = doc.add_table(rows=1 + len(data), cols=len(header)); t.style = 'Table Grid'
+    t.autofit = True
     t.alignment = WD_TABLE_ALIGNMENT.CENTER
     for j, h in enumerate(header):
         c = t.rows[0].cells[j]; c.text = ''
         pp = c.paragraphs[0]; pp.alignment = WD_ALIGN_PARAGRAPH.CENTER
         pp.paragraph_format.line_spacing = Pt(13); pp.paragraph_format.space_after = Pt(0)
-        add_runs(pp, h.strip('* '), 10);
+        add_runs(pp, h.strip('* '), 10)
         for r in pp.runs: r.bold = True
-        shade(c, 'E8E8E8')
     for i, row in enumerate(data):
         for j, v in enumerate(row):
             if j >= len(header): continue
@@ -111,6 +124,9 @@ def md_table(doc, rows):
             pp.alignment = WD_ALIGN_PARAGRAPH.LEFT if j == 0 else WD_ALIGN_PARAGRAPH.CENTER
             pp.paragraph_format.line_spacing = Pt(13); pp.paragraph_format.space_after = Pt(0)
             add_runs(pp, v.strip(), 10)
+    rule(t.rows[0], ('top', 'bottom'))                 # rule above the table and under the header
+    for r in t.rows[1:]: rule(r, ())
+    rule(t.rows[-1], ('bottom',))                      # closing rule
     return t
 
 def main():
@@ -127,23 +143,30 @@ def main():
     doc = Document()
     sec = doc.sections[0]
     sec.page_width, sec.page_height = Cm(21), Cm(29.7)
-    for a in ('left_margin', 'right_margin', 'top_margin', 'bottom_margin'): setattr(sec, a, Cm(2.5))
+    sec.left_margin = sec.right_margin = Cm(1.9)
+    sec.top_margin = sec.bottom_margin = Cm(2.5)
     st = doc.styles['Normal']; st.font.name = FONT; st.font.size = Pt(12)
     st.element.rPr.rFonts.set(qn('w:eastAsia'), FONT)
 
     # ---- front matter
-    p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    body(doc, 'Research article', space_after=8).runs[0].bold = True
+    p = doc.add_paragraph(); p.paragraph_format.space_after = Pt(10)
+    p.paragraph_format.line_spacing = Pt(18); p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.AT_LEAST
     setfont(p.add_run('Information or architecture? A decomposition protocol for evaluating '
                       'deep learning gains in volatility forecasting'), 16, bold=True)
-    body(doc, 'Jerome Chih-Lung Chou*', align='center', space_after=2)
-    body(doc, 'Graduate Institute of Finance, National Taiwan University of Science and Technology, Taipei, Taiwan',
-         size=11, align='center', space_after=2)
-    body(doc, '* Corresponding author. E-mail: jerome.chou@mail.ntust.edu.tw', size=11, align='center', space_after=14)
-    body(doc, 'Abstract')
-    doc.paragraphs[-1].runs[0].bold = True
-    body(doc, ABSTRACT)
-    body(doc, 'Keywords: ' + KEYWORDS)
-    body(doc, 'JEL classification: C22, C45, C53, G17', space_after=14)
+    au = doc.add_paragraph(); au.paragraph_format.space_after = Pt(8)
+    setfont(au.add_run('Jerome Chih-Lung Chou'), 12, bold=True)
+    sup = au.add_run('1,*'); setfont(sup, 12, bold=True); sup.font.superscript = True
+    aff = doc.add_paragraph(); aff.paragraph_format.space_after = Pt(2)
+    one = aff.add_run('1'); setfont(one, 12, bold=True); one.font.superscript = True
+    setfont(aff.add_run(TAB + 'Graduate Institute of Finance, National Taiwan University of Science and '
+                        'Technology, Taipei, Taiwan'), 12, bold=True)
+    cor = doc.add_paragraph(); cor.paragraph_format.space_after = Pt(14)
+    star = cor.add_run('*'); setfont(star, 12, bold=True); star.font.superscript = True
+    setfont(cor.add_run(TAB + 'Correspondence: Email: jerome.chou@ntust.edu.tw.'), 12, bold=True)
+    ab = body(doc, 'Abstract: ' + ABSTRACT); ab.runs[0].bold = True
+    kw = body(doc, 'Keywords: ' + KEYWORDS); kw.runs[0].bold = True
+    jl = body(doc, 'JEL Codes: C22, C45, C53, G17', space_after=14); jl.runs[0].bold = True
 
     # ---- body
     lines = md.split('\n')
@@ -161,7 +184,8 @@ def main():
             fig_counter += 1
             doc.add_picture(path, width=Cm(15.5))
             doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
-            cp = body(doc, f'Figure {fig_counter}. {cap}', size=10, align='center', space_after=12)
+            cp = body(doc, f'Figure {fig_counter}. {cap}', size=12, align='center', space_after=12)
+            for r in cp.runs: r.bold = True
     while i < len(lines):
         ln = lines[i]
         if ln.strip() in ('', '---'):
@@ -174,13 +198,13 @@ def main():
             if m:
                 if cur_sec != '0': flush_figs(cur_sec)
                 cur_sec = m.group(1)
-            doc.add_page_break() if txt.startswith(('1.', 'References')) and cur_sec != '1' else None
             p = doc.add_paragraph(); p.paragraph_format.space_before = Pt(14); p.paragraph_format.space_after = Pt(6)
-            setfont(p.add_run(txt), 14, bold=True)
+            setfont(p.add_run(re.sub(r'^(\d+)[.]\s+', r'\1.' + TAB, txt)), 12, bold=True)
             i += 1; continue
         if ln.startswith('## '):
+            txt = re.sub(r'^(\d+[.]\d+)[.]?\s+', r'\1.' + TAB, ln[3:].strip())
             p = doc.add_paragraph(); p.paragraph_format.space_before = Pt(10); p.paragraph_format.space_after = Pt(4)
-            setfont(p.add_run(ln[3:].strip()), 12.5, bold=True)
+            setfont(p.add_run(txt), 12)
             i += 1; continue
         if ln.startswith('**Table') or re.match(r'^\*\*Table \d', ln):
             pending_caption = ln.strip('* '); i += 1; continue
@@ -193,7 +217,8 @@ def main():
             tab_n += 1
             cap = pending_caption or ''
             cap = re.sub(r'^Table [\d.]+\s*', '', cap)
-            body(doc, f'Table {tab_n}. {cap}', size=10, space_after=3)
+            tc = body(doc, f'Table {tab_n}. {cap}', size=12, space_after=3)
+            for r in tc.runs: r.bold = True
             md_table(doc, block); pending_caption = None
             doc.add_paragraph().paragraph_format.space_after = Pt(6)
             continue
@@ -205,9 +230,11 @@ def main():
             eq = ' '.join(buf).replace('$$', '').strip()
             eq = re.sub(r'\\tag\{(\d+)\}', '', eq).strip()
             eq_n += 1
-            p = doc.add_paragraph(); p.paragraph_format.line_spacing = Pt(18)
-            p.paragraph_format.space_before = Pt(6); p.paragraph_format.space_after = Pt(6)
-            setfont(p.add_run(f'({eq_n})\t'), 12)
+            p = doc.add_paragraph(); pf = p.paragraph_format
+            pf.line_spacing = Pt(15); pf.line_spacing_rule = WD_LINE_SPACING.AT_LEAST
+            pf.space_before = Pt(6); pf.space_after = Pt(6)
+            pf.tab_stops.add_tab_stop(Cm(8.6), WD_TAB_ALIGNMENT.CENTER)   # equation centred
+            setfont(p.add_run(f'({eq_n})' + TAB), 12)
             setfont(p.add_run(eq), 12, italic=True)
             i += 1; continue
         if re.match(r'^[-*] ', ln):                              # bullet
@@ -218,12 +245,15 @@ def main():
             i += 1; continue
         if ln.startswith('> '):
             body(doc, ln[2:].strip(), size=11, indent=0.8); i += 1; continue
-        body(doc, ln.strip())
+        body(doc, ln.strip(), first_line=True)
         i += 1
     flush_figs(cur_sec)
     for sec_no, fname, cap in FIGMAP:                            # anything the section sweep missed
         if fname not in placed: flush_figs(sec_no)
     assert len(placed) == len(FIGMAP), f'figures not placed: {[f for _, f, _ in FIGMAP if f not in placed]}'
+    body(doc, '© 2026 the Author(s), licensee AIMS Press. This is an open access article distributed under the '
+              'terms of the Creative Commons Attribution License (https://creativecommons.org/licenses/by/4.0)',
+         size=11, space_after=0)
     doc.save(OUT)
     print('saved', OUT)
     print(f'tables: {tab_n} | equations: {eq_n} | figures: {fig_counter}')

@@ -4,7 +4,7 @@ matplotlib.use('Agg'); import matplotlib.pyplot as plt
 plt.rcParams.update({'font.family':'Times New Roman','axes.unicode_minus':False,'font.size':10,
  'axes.spines.top':False,'axes.spines.right':False,'axes.edgecolor':'#8a8984','axes.labelcolor':'#333333',
  'xtick.color':'#333333','ytick.color':'#333333','axes.grid':True,'grid.color':'#e6e5e0','grid.linewidth':0.6,
- 'figure.dpi':200,'savefig.bbox':'tight','legend.frameon':False})
+ 'figure.dpi':300,'savefig.bbox':'tight','savefig.dpi':300,'legend.frameon':False})
 D=pd.read_parquet('analysis_daily.parquet')
 fig,ax=plt.subplots(figsize=(9,3.2))
 ax.plot(D.index, np.exp(0.5*D.lrv_m)*100, color='#2a78d6', lw=1.1)

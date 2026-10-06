@@ -42,7 +42,7 @@ para('Title page', 11, align='left', after=18)
 para('Information or architecture? A decomposition protocol for evaluating deep learning gains in volatility forecasting', 15, bold=True, after=16)
 para('Jerome Chih-Lung Chou', 12, after=4)
 para('Graduate Institute of Finance, National Taiwan University of Science and Technology, Taipei, Taiwan', 11, after=4)
-para('E-mail: jerome.chou@mail.ntust.edu.tw', 11, after=20)
+para('E-mail: jerome.chou@ntust.edu.tw', 11, after=20)
 for line in ['Corresponding author: Jerome Chih-Lung Chou.',
              'Funding: This research received no external funding.',
              'Conflicts of interest: The author declares no conflicts of interest.',
