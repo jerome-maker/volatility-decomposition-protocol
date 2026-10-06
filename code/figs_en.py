@@ -8,8 +8,8 @@ from evaluate import qlike, rmse_vol, vol_target
 plt.rcParams.update({'font.family': 'Times New Roman', 'mathtext.fontset': 'stix',
     'axes.unicode_minus': False, 'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False,
     'axes.edgecolor': '#8a8984', 'axes.labelcolor': '#333333', 'xtick.color': '#333333', 'ytick.color': '#333333',
-    'axes.grid': True, 'grid.color': '#e6e5e0', 'grid.linewidth': 0.6, 'figure.dpi': 200,
-    'savefig.bbox': 'tight', 'legend.frameon': False})
+    'axes.grid': True, 'grid.color': '#e6e5e0', 'grid.linewidth': 0.6, 'figure.dpi': 300,
+    'savefig.bbox': 'tight', 'savefig.dpi': 300, 'legend.frameon': False})
 C = dict(l0='#8a8984', l1='#eb6834', l2='#eda100', l3='#1baf7a', l4='#2a78d6', act='#0b0b0b',
          vio='#4a3aa7', qqq='#2a78d6', spy='#eb6834')
 
