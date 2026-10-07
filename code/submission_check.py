@@ -37,6 +37,9 @@ bad_ls = [x for x in ls if isinstance(x, Pt(1).__class__) and x.pt < 15]
     f'方程式物件 {len(doc.part.element.xpath(".//m:oMath"))} 個（須為可編輯物件）')
 (ok if not re.search(r'[\u4e00-\u9fff]', full) else fail).append('中文殘留 0 處' if not re.search(r'[\u4e00-\u9fff]', full) else '仍有中文殘留')
 (ok if not re.search(r'\\[a-zA-Z]+\{|\$\w', full) else fail).append('LaTeX 標記殘留 0 處')
+caps = [p.text for p in doc.paragraphs if p.text.strip().startswith(('Table ', 'Figure '))]
+stray = [c for c in caps if '*' in c or '_' in c.split('.')[0]]
+(ok if not stray else fail).append(f'表圖標題殘留 markdown 標記 {len(stray)} 處')
 
 # --- numbering and cross-references
 tab_caps = sorted(int(m) for m in re.findall(r'^Table (\d+)\.', body, re.M))

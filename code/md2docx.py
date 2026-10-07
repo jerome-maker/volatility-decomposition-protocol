@@ -207,7 +207,8 @@ def main():
             setfont(p.add_run(txt), 12)
             i += 1; continue
         if ln.startswith('**Table') or re.match(r'^\*\*Table \d', ln):
-            pending_caption = ln.strip('* '); i += 1; continue
+            pending_caption = re.sub(r'^\*{0,2}Table\s+[\d.]+\*{0,2}\s*', '', ln.strip())   # drop the markdown label, keep the caption text
+            i += 1; continue
         if ln.startswith('|'):                                   # markdown table
             block = []
             while i < len(lines) and lines[i].startswith('|'):
