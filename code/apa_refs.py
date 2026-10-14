@@ -112,7 +112,13 @@ def main():
             notes.append(f"標題與 Crossref 不同（保留草稿版）\n      草稿: {title}\n      Crossref: {m['title']}")
         journal = m['journal'] or re.search(r'\*([^*]+)\*', line).group(1)
         vol, iss, pg = m['volume'], m['issue'], (m['page'] or '').replace('-', '–')
-        bits = f"{author_string(m['authors'])} ({m['year']}). {title}. *{journal}*"
+        # Crossref's "issued" date can be the online-first year; the issue year is what APA wants,
+        # and where Crossref has no print date the draft's year was checked against the journal.
+        draft_year = int(re.search(r'\((\d{4})\)', line).group(1))
+        year = m.get('print_year') or draft_year
+        if year != draft_year:
+            notes.append(f'年份改用卷期年 {year}（草稿 {draft_year}、Crossref issued {m["year"]}）: {title[:50]}')
+        bits = f"{author_string(m['authors'])} ({year}). {title}. *{journal}*"
         if vol:
             bits += f", *{vol}*" + (f"({iss})" if iss else '')
         if pg:
