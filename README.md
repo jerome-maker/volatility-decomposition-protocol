@@ -68,4 +68,4 @@ See `CITATION.cff`.
 
 ## Licence
 
-Code: MIT. Data and figures: CC BY 4.0.
+Code: MIT (`LICENSE`). Data and figures: CC BY 4.0 (`LICENSE-DATA.md`).
