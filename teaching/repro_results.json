@@ -1,0 +1,947 @@
+[
+ {
+  "id": "N_total",
+  "location": "Section 4.1 text",
+  "kind": "count",
+  "reported": "3771",
+  "computed": 3771,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "VIF_level",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "6.3",
+  "computed": "6.3",
+  "status": "reproduced_note",
+  "detail": "design inferred: HAR plus option block, estimation sample"
+ },
+ {
+  "id": "VIF_slope",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "1.6",
+  "computed": "1.6",
+  "status": "reproduced_note",
+  "detail": "same design"
+ },
+ {
+  "id": "VIF_vix_raw",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "26.9",
+  "computed": "26.9",
+  "status": "reproduced_note",
+  "detail": "same design"
+ },
+ {
+  "id": "VIF_vix9d_raw",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "24.6",
+  "computed": "24.6",
+  "status": "reproduced_note",
+  "detail": "same design"
+ },
+ {
+  "id": "reparam_identical",
+  "location": "Section 4.3 text",
+  "kind": "text",
+  "reported": "TRUE",
+  "computed": true,
+  "status": "reproduced",
+  "detail": "max gap 2.2e-15"
+ },
+ {
+  "id": "corr_vix_vix9d",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "0.975",
+  "computed": "0.975",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "corr_raw_returns",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "0.927",
+  "computed": "0.927",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "corr_rel_return",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "0.140",
+  "computed": "-0.140",
+  "status": "differs",
+  "detail": "|diff|=0.28 > tol=0.0005; the manuscript prints the magnitude; the correlation is negative"
+ },
+ {
+  "id": "N_est",
+  "location": "Table 4.1 row Estimation",
+  "kind": "count",
+  "reported": "2516",
+  "computed": 2516,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "N_val",
+  "location": "Table 4.1 row Validation",
+  "kind": "count",
+  "reported": "503",
+  "computed": 503,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "N_eval",
+  "location": "Table 4.1 row Evaluation",
+  "kind": "count",
+  "reported": "752",
+  "computed": 752,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "N_holdout",
+  "location": "Table 4.1 row Reserved hold-out",
+  "kind": "count",
+  "reported": "175",
+  "computed": 175,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_qlike_L0",
+  "location": "Table 5.1 row Random walk col A QLIKE",
+  "kind": "value",
+  "reported": "0.3176",
+  "computed": "0.3176",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_qlike_trf",
+  "location": "Table 5.1 row Transformer col A QLIKE",
+  "kind": "value",
+  "reported": "0.2079",
+  "computed": "0.2079",
+  "status": "reproduced_note",
+  "detail": "computed from the stored ten-seed ensemble forecast; the network is not retrained here"
+ },
+ {
+  "id": "T51_rmse_trf",
+  "location": "Table 5.1 row Transformer col A RMSE",
+  "kind": "value",
+  "reported": "5.36",
+  "computed": "5.36",
+  "status": "reproduced_note",
+  "detail": "same"
+ },
+ {
+  "id": "T51B_qlike_trf",
+  "location": "Table 5.1 row Transformer col B QLIKE",
+  "kind": "value",
+  "reported": "0.3122",
+  "computed": "0.3122",
+  "status": "reproduced_note",
+  "detail": "same"
+ },
+ {
+  "id": "T51_best_model",
+  "location": "Section 5.1 text",
+  "kind": "text",
+  "reported": "TRUE",
+  "computed": true,
+  "status": "reproduced",
+  "detail": "lowest QLIKE at both targets"
+ },
+ {
+  "id": "T51_nonmonotone",
+  "location": "Section 5.1 text",
+  "kind": "text",
+  "reported": "TRUE",
+  "computed": true,
+  "status": "reproduced",
+  "detail": "HAR-RV above GJR-GARCH"
+ },
+ {
+  "id": "T51_qlike_har",
+  "location": "Table 5.1 row HAR-RV col A QLIKE",
+  "kind": "value",
+  "reported": "0.2318",
+  "computed": "0.2318",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_qlike_harx_opt",
+  "location": "Table 5.1 row HAR-RV-X option only col A QLIKE",
+  "kind": "value",
+  "reported": "0.1928",
+  "computed": "0.1928",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_qlike_harx_full",
+  "location": "Table 5.1 row HAR-RV-X all exogenous col A QLIKE",
+  "kind": "value",
+  "reported": "0.1835",
+  "computed": "0.1835",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_rmse_harx_full",
+  "location": "Table 5.1 row HAR-RV-X all exogenous col A RMSE",
+  "kind": "value",
+  "reported": "5.15",
+  "computed": "5.15",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_mae_harx_opt",
+  "location": "Table 5.1 row HAR-RV-X option only col A MAE",
+  "kind": "value",
+  "reported": "2.84",
+  "computed": "2.84",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51B_qlike_harx_full",
+  "location": "Table 5.1 row HAR-RV-X all exogenous col B QLIKE",
+  "kind": "value",
+  "reported": "0.3108",
+  "computed": "0.3108",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_qlike_g11",
+  "location": "Table 5.1 row GARCH(1,1) col A QLIKE",
+  "kind": "value",
+  "reported": "0.2340",
+  "computed": "0.2340",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_qlike_gjr",
+  "location": "Table 5.1 row GJR-GARCH col A QLIKE",
+  "kind": "value",
+  "reported": "0.1998",
+  "computed": "0.1998",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T53_dq_trf_gjr",
+  "location": "Table 5.3 row Transformer vs GJR-GARCH col dQLIKE",
+  "kind": "value",
+  "reported": "0.008",
+  "computed": "0.008",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T53_p_trf_gjr",
+  "location": "Table 5.3 row Transformer vs GJR-GARCH col p",
+  "kind": "value",
+  "reported": "0.645",
+  "computed": "0.645",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T53_dq_trf_harx",
+  "location": "Table 5.3 row Transformer vs HAR-RV-X col dQLIKE",
+  "kind": "value",
+  "reported": "0.024",
+  "computed": "0.024",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T53_p_trf_harx",
+  "location": "Table 5.3 row Transformer vs HAR-RV-X col p",
+  "kind": "value",
+  "reported": "0.005",
+  "computed": "0.005",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T53_dq_harx_har",
+  "location": "Table 5.3 row HAR-RV-X vs HAR-RV col dQLIKE",
+  "kind": "value",
+  "reported": "-0.048",
+  "computed": "-0.048",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T53_p_harx_har",
+  "location": "Table 5.3 row HAR-RV-X vs HAR-RV col p",
+  "kind": "value",
+  "reported": "0.011",
+  "computed": "0.011",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "CW_stat_full",
+  "location": "Section 5.2 text",
+  "kind": "value",
+  "reported": "1.57",
+  "computed": "1.57",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "CW_p_full",
+  "location": "Section 5.2 text",
+  "kind": "value",
+  "reported": "0.058",
+  "computed": "0.058",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "CW_stat_opt",
+  "location": "Section 5.2 text",
+  "kind": "value",
+  "reported": "1.63",
+  "computed": "1.63",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "CW_p_opt",
+  "location": "Section 5.2 text",
+  "kind": "value",
+  "reported": "0.052",
+  "computed": "0.052",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_ci_dinfo_A_lo",
+  "location": "Table 5.2 row Delta_info 90% interval lower (A)",
+  "kind": "value",
+  "reported": "0.017",
+  "computed": "-",
+  "status": "not_verifiable",
+  "detail": "evaluate.py shares one module-level generator across calls, so the stream position when the published interval was drawn is not recoverable; fresh streams give +0.016 +- 0.001"
+ },
+ {
+  "id": "T52_ci_dinfo_A_hi",
+  "location": "Table 5.2 row Delta_info 90% interval upper (A)",
+  "kind": "value",
+  "reported": "0.083",
+  "computed": "-",
+  "status": "not_verifiable",
+  "detail": "same reason; fresh streams give +0.084 +- 0.001"
+ },
+ {
+  "id": "MCS_qlike_kept",
+  "location": "Section 5.3 text",
+  "kind": "count",
+  "reported": "7",
+  "computed": 7,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T54_qlike_lstm_A",
+  "location": "Table 5.4 row LSTM col A QLIKE",
+  "kind": "value",
+  "reported": "0.1935",
+  "computed": "0.1935",
+  "status": "reproduced_note",
+  "detail": "stored ten-seed ensemble"
+ },
+ {
+  "id": "T54_darch_lstm_A",
+  "location": "Section 5.5 text",
+  "kind": "value",
+  "reported": "-0.010",
+  "computed": "-0.010",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T54_p_darch_lstm_A",
+  "location": "Section 5.5 text",
+  "kind": "value",
+  "reported": "0.113",
+  "computed": "0.113",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T54_trf_vs_lstm",
+  "location": "Section 5.5 text",
+  "kind": "value",
+  "reported": "0.014",
+  "computed": "0.014",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T54_p_trf_vs_lstm",
+  "location": "Section 5.5 text",
+  "kind": "value",
+  "reported": "0.029",
+  "computed": "0.029",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T55_harx_all",
+  "location": "Table 5.5 row HAR-RV-X col All",
+  "kind": "value",
+  "reported": "0.183",
+  "computed": "0.183",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T55_gjr_top20",
+  "location": "Table 5.5 row GJR-GARCH col Top 20% realized",
+  "kind": "value",
+  "reported": "0.423",
+  "computed": "0.423",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T55_trf_highvix",
+  "location": "Table 5.5 row Transformer col High VIX",
+  "kind": "value",
+  "reported": "0.241",
+  "computed": "0.241",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T55_harx_apr",
+  "location": "Table 5.5 row HAR-RV-X col Mar-May 2025",
+  "kind": "value",
+  "reported": "0.519",
+  "computed": "0.519",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_dhf_A",
+  "location": "Table 5.2 row Delta_HF col Target A",
+  "kind": "value",
+  "reported": "-0.032",
+  "computed": "-0.032",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_dinfo_A",
+  "location": "Table 5.2 row Delta_info col Target A",
+  "kind": "value",
+  "reported": "0.048",
+  "computed": "0.048",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_darch_A",
+  "location": "Table 5.2 row Delta_arch col Target A",
+  "kind": "value",
+  "reported": "-0.024",
+  "computed": "-0.024",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_total_A",
+  "location": "Table 5.2 row Total col Target A",
+  "kind": "value",
+  "reported": "-0.008",
+  "computed": "-0.008",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_p_dhf_A",
+  "location": "Table 5.2 row Delta_HF col DM p (A)",
+  "kind": "value",
+  "reported": "0.127",
+  "computed": "0.127",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_p_dinfo_A",
+  "location": "Table 5.2 row Delta_info col DM p (A)",
+  "kind": "value",
+  "reported": "0.011",
+  "computed": "0.011",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_p_darch_A",
+  "location": "Table 5.2 row Delta_arch col DM p (A)",
+  "kind": "value",
+  "reported": "0.005",
+  "computed": "0.005",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_p_total_A",
+  "location": "Table 5.2 row Total col DM p (A)",
+  "kind": "value",
+  "reported": "0.645",
+  "computed": "0.645",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_dinfo_B",
+  "location": "Table 5.2 row Delta_info col Target B",
+  "kind": "value",
+  "reported": "0.079",
+  "computed": "0.079",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_darch_B",
+  "location": "Table 5.2 row Delta_arch col Target B",
+  "kind": "value",
+  "reported": "-0.001",
+  "computed": "-0.001",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_p_darch_B",
+  "location": "Table 5.2 row Delta_arch col DM p (B)",
+  "kind": "value",
+  "reported": "0.926",
+  "computed": "0.926",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T52_additivity",
+  "location": "Section 3.4 text",
+  "kind": "text",
+  "reported": "TRUE",
+  "computed": true,
+  "status": "reproduced",
+  "detail": "gap 3.5e-18"
+ },
+ {
+  "id": "abs_dinfo",
+  "location": "Abstract",
+  "kind": "value",
+  "reported": "0.048",
+  "computed": "0.048",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "abs_darch_sign",
+  "location": "Abstract",
+  "kind": "sign",
+  "reported": "-",
+  "computed": "-",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T51_qlike_garchx",
+  "location": "Table 5.1 row GARCH-X col A QLIKE",
+  "kind": "value",
+  "reported": "0.2003",
+  "computed": "0.2003",
+  "status": "reproduced_note",
+  "detail": "computed from the stored GARCH-X forecasts; the full MLE is not refit in the notebook"
+ },
+ {
+  "id": "T61_viol_gjr",
+  "location": "Table 6.1 row GJR-GARCH col Violations",
+  "kind": "count",
+  "reported": "4",
+  "computed": 4,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T61_viol_trf",
+  "location": "Table 6.1 row Transformer col Violations",
+  "kind": "count",
+  "reported": "3",
+  "computed": 3,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T61_p_kupiec_gjr",
+  "location": "Table 6.1 row GJR-GARCH col Kupiec p",
+  "kind": "value",
+  "reported": "0.147",
+  "computed": "0.147",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T61_allpass",
+  "location": "Section 6.1 text",
+  "kind": "text",
+  "reported": "TRUE",
+  "computed": true,
+  "status": "reproduced",
+  "detail": "minimum Kupiec p across models = 0.054"
+ },
+ {
+  "id": "T62_sharpe_gjr",
+  "location": "Table 6.2 row GJR-GARCH col Sharpe",
+  "kind": "value",
+  "reported": "1.88",
+  "computed": "1.88",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T62_sharpe_harx",
+  "location": "Table 6.2 row HAR-RV-X col Sharpe",
+  "kind": "value",
+  "reported": "1.72",
+  "computed": "1.72",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T62_sharpe_trf",
+  "location": "Table 6.2 row Transformer col Sharpe",
+  "kind": "value",
+  "reported": "1.61",
+  "computed": "1.61",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T62_sharpe_bh",
+  "location": "Table 6.2 row Buy and hold col Sharpe",
+  "kind": "value",
+  "reported": "1.40",
+  "computed": "1.40",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T62_avgw_gjr",
+  "location": "Table 6.2 row GJR-GARCH col Average exposure",
+  "kind": "value",
+  "reported": "0.80",
+  "computed": "0.80",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T62_ret_gjr",
+  "location": "Table 6.2 row GJR-GARCH col Annualized return",
+  "kind": "value",
+  "reported": "18.9",
+  "computed": "18.9",
+  "status": "reproduced_note",
+  "detail": "geometric, as the model rows are"
+ },
+ {
+  "id": "T62_ret_bh",
+  "location": "Table 6.2 row Buy and hold col Annualized return",
+  "kind": "value",
+  "reported": "20.7",
+  "computed": "20.7",
+  "status": "reproduced_note",
+  "detail": "matches only under the arithmetic convention; geometric would be 21.6%"
+ },
+ {
+  "id": "T62_rank_sharpe",
+  "location": "Section 6.2 text",
+  "kind": "rank",
+  "reported": "GJR-GARCH;GARCH-X;HAR-RV-X;LSTM;Transformer;HAR-RV",
+  "computed": "GJR-GARCH;GARCH-X;HAR-RV-X;LSTM;Transformer;HAR-RV",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "seed_min",
+  "location": "Section 7.1 text",
+  "kind": "value",
+  "reported": "0.195",
+  "computed": "0.195",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "seed_max",
+  "location": "Section 7.1 text",
+  "kind": "value",
+  "reported": "0.258",
+  "computed": "0.258",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "seed_spread",
+  "location": "Abstract and Section 7.1",
+  "kind": "value",
+  "reported": "0.064",
+  "computed": "0.064",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "seed_ens_05",
+  "location": "Section 7.1 text",
+  "kind": "value",
+  "reported": "0.2096",
+  "computed": "0.2096",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "seed_ens_59",
+  "location": "Section 7.1 text",
+  "kind": "value",
+  "reported": "0.2101",
+  "computed": "0.2101",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "seed_ens_all",
+  "location": "Section 7.1 text",
+  "kind": "value",
+  "reported": "0.2079",
+  "computed": "0.2079",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "version_shift",
+  "location": "Abstract and Section 7.2",
+  "kind": "value",
+  "reported": "0.011",
+  "computed": "-",
+  "status": "not_verifiable",
+  "detail": "needs two PyTorch builds (2.6.0+cu124 and 2.13.0+cu126) installed side by side and the networks retrained under each; the notebook has neither GPU training nor both builds"
+ },
+ {
+  "id": "T81_qqq_harx",
+  "location": "Table 8.1 row HAR-GK-X all exogenous col QQQ",
+  "kind": "value",
+  "reported": "0.3195",
+  "computed": "0.3195",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T81_spy_harx",
+  "location": "Table 8.1 row HAR-GK-X all exogenous col SPY",
+  "kind": "value",
+  "reported": "0.3127",
+  "computed": "0.3127",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T82_dinfo_qqq",
+  "location": "Table 8.2 row Delta_info col QQQ",
+  "kind": "value",
+  "reported": "0.052",
+  "computed": "0.052",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T82_p_dinfo_qqq",
+  "location": "Table 8.2 row Delta_info col DM p (QQQ)",
+  "kind": "value",
+  "reported": "0.027",
+  "computed": "0.027",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T82_dinfo_spy",
+  "location": "Table 8.2 row Delta_info col SPY",
+  "kind": "value",
+  "reported": "0.095",
+  "computed": "0.095",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T82_darch_qqq",
+  "location": "Table 8.2 row Delta_arch col QQQ",
+  "kind": "value",
+  "reported": "-0.028",
+  "computed": "-0.028",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "N_holdout_used",
+  "location": "Section 8.5 text",
+  "kind": "count",
+  "reported": "170",
+  "computed": 170,
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T83_qlike_har_A",
+  "location": "Table 8.3 row HAR-RV col A QLIKE",
+  "kind": "value",
+  "reported": "0.1964",
+  "computed": "0.1964",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T83_qlike_harx_A",
+  "location": "Table 8.3 row HAR-RV-X all exogenous col A QLIKE",
+  "kind": "value",
+  "reported": "0.1637",
+  "computed": "0.1637",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T84_dinfo_A",
+  "location": "Table 8.4 row Delta_info col Target A",
+  "kind": "value",
+  "reported": "0.033",
+  "computed": "0.033",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T83_qlike_trf_A",
+  "location": "Table 8.3 row Transformer col A QLIKE",
+  "kind": "value",
+  "reported": "0.1478",
+  "computed": "-",
+  "status": "not_verifiable",
+  "detail": "the 2026 Transformer forecasts were not stored, and retraining needs GPU time"
+ },
+ {
+  "id": "T84_darch_trf_A",
+  "location": "Table 8.4 row Delta_arch Transformer col Target A",
+  "kind": "value",
+  "reported": "0.016",
+  "computed": "-",
+  "status": "not_verifiable",
+  "detail": "depends on the 2026 Transformer forecasts, which are not in the repository"
+ },
+ {
+  "id": "T85_har_daily",
+  "location": "Table 8.5 row HAR-RV col Daily expanding",
+  "kind": "value",
+  "reported": "0.2318",
+  "computed": "0.2318",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T85_harx_daily",
+  "location": "Table 8.5 row HAR-RV-X col Daily expanding",
+  "kind": "value",
+  "reported": "0.1826",
+  "computed": "0.1826",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T85_harx_roll630",
+  "location": "Table 8.5 row HAR-RV-X col Daily rolling 630",
+  "kind": "value",
+  "reported": "0.1887",
+  "computed": "0.1887",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T86_dinfo_daily",
+  "location": "Table 8.6 row Evaluation Daily expanding col Delta_info",
+  "kind": "value",
+  "reported": "0.049",
+  "computed": "0.049",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T86_darch_daily",
+  "location": "Table 8.6 row Evaluation Daily expanding col Delta_arch",
+  "kind": "value",
+  "reported": "-0.025",
+  "computed": "-0.025",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T91_wald_g3_h5",
+  "location": "Table 9.1 row G3 Option-implied col Wald h=5",
+  "kind": "value",
+  "reported": "430.9",
+  "computed": "430.9",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T91_wald_g5_h5",
+  "location": "Table 9.1 row G5 Interest rates col Wald h=5",
+  "kind": "value",
+  "reported": "10.7",
+  "computed": "10.7",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T91_g3_largest",
+  "location": "Section 9.1 text",
+  "kind": "text",
+  "reported": "TRUE",
+  "computed": true,
+  "status": "reproduced",
+  "detail": "largest Wald is G3 選擇權前瞻"
+ },
+ {
+  "id": "T92_share_g3",
+  "location": "Table 9.2 row G3 Option-implied col Share",
+  "kind": "value",
+  "reported": "26.2",
+  "computed": "-",
+  "status": "not_verifiable",
+  "detail": "attribution shares need the trained Transformer and a gradient explainer; the notebook has neither the weights nor GPU training"
+ },
+ {
+  "id": "T92_rank_attr",
+  "location": "Table 9.2 ordering",
+  "kind": "rank",
+  "reported": "G3;G1;G4;G2;G6;G5;G7",
+  "computed": "-",
+  "status": "not_verifiable",
+  "detail": "same reason as T92_share_g3"
+ }
+]

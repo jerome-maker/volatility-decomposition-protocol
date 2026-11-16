@@ -28,6 +28,16 @@ FIGS = ['f1_overview.png', 'r1_ladder.png', 'r2_decomp.png', 'r3_pred.png', 'r4_
 for i, f in enumerate(FIGS, 1): shutil.copy(CODE + 'fig/' + f, REPO + f'figures/Figure{i}.png')
 shutil.copy(CODE + 'ENVIRONMENT.md', REPO + 'ENVIRONMENT.md')
 
+# teaching material and its reproduction report
+TEACH = SRC + 'teaching/'
+if os.path.isdir(TEACH):
+    os.makedirs(REPO + 'teaching/parts/', exist_ok=True)
+    for f in ('volatility_ladder_tutorial.ipynb', 'findings.csv', 'repro_results.json', 'README.md',
+              'repro.py', 'check_reproduction.py', 'build_notebook.py', 'check_notebook_render.py'):
+        if os.path.isfile(TEACH + f): shutil.copy(TEACH + f, REPO + 'teaching/' + f)
+    for f in os.listdir(TEACH + 'parts'):
+        if f.endswith('.py'): shutil.copy(TEACH + 'parts/' + f, REPO + 'teaching/parts/' + f)
+
 readme = f"""# {TITLE}
 
 Replication material for the paper. Every table and figure can be rebuilt from the files here;

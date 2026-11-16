@@ -20,6 +20,18 @@ component that is positive and significant; neither a Transformer nor an LSTM im
 model with the same inputs; and the architecture component is of the same order as the variation caused
 by the number of random seeds and by the version of the deep learning library.
 
+## Teaching material
+
+`teaching/volatility_ladder_tutorial.ipynb` walks the whole method up a skill tree, from data
+construction to the decomposition, in Chinese and English side by side. Every technique is covered
+in four layers — principle, formulas, algorithm, program logic — with this study's own data as the
+worked example, and every number the paper reports is re-derived in the notebook and compared with
+the manuscript. The final units give the reproduction report and dissect the project's real bugs.
+
+Of the 105 registered findings, 97 reproduce, 7 are marked not verifiable with the reason stated
+(they need GPU retraining or two versions of the deep learning library), and 1 differs. See
+`teaching/README.md`.
+
 ## Layout
 
 ```
@@ -27,6 +39,7 @@ code/        every script, from raw data to the final document
 data/        daily derived series, predictor groups, forecast series by model and seed
 results/     all result tables (CSV/JSON) reported in the paper
 figures/     Figure 1-9 as published
+teaching/    bilingual skill-tree tutorial and the reproduction report
 ENVIRONMENT.md   locked software environment, including the two PyTorch builds compared in Section 7
 ```
 

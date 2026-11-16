@@ -1,0 +1,106 @@
+id,location,kind,reported,decimals,scale,unit,note
+N_total,"Section 4.1 text",count,3771,,,f1_target,trading days 2011-01-04 to 2025-12-31
+N_est,"Table 4.1 row Estimation",count,2516,,,f3_protocol,
+N_val,"Table 4.1 row Validation",count,503,,,f3_protocol,
+N_eval,"Table 4.1 row Evaluation",count,752,,,f3_protocol,
+N_holdout,"Table 4.1 row Reserved hold-out",count,175,,,r2_holdout,calendar 2026 rows in the data file
+N_holdout_used,"Section 8.5 text",count,170,,,r2_holdout,days with a complete five-day target
+T51_qlike_L0,"Table 5.1 row Random walk col A QLIKE",value,0.3176,,,c1_loss,
+T51_qlike_g11,"Table 5.1 row GARCH(1,1) col A QLIKE",value,0.2340,,,c3_garch,refit with arch
+T51_qlike_gjr,"Table 5.1 row GJR-GARCH col A QLIKE",value,0.1998,,,c3_garch,refit with arch
+T51_qlike_har,"Table 5.1 row HAR-RV col A QLIKE",value,0.2318,,,c2_har,refit by OLS in logs
+T51_qlike_harx_opt,"Table 5.1 row HAR-RV-X option only col A QLIKE",value,0.1928,,,c2_har,refit by OLS in logs
+T51_qlike_harx_full,"Table 5.1 row HAR-RV-X all exogenous col A QLIKE",value,0.1835,,,c2_har,refit by OLS in logs
+T51_qlike_garchx,"Table 5.1 row GARCH-X col A QLIKE",value,0.2003,,,k3_garchx,custom MLE
+T51_qlike_trf,"Table 5.1 row Transformer col A QLIKE",value,0.2079,,,k1_ladder,from the stored ten-seed ensemble forecast
+T51_rmse_harx_full,"Table 5.1 row HAR-RV-X all exogenous col A RMSE",value,5.15,,,c2_har,
+T51_rmse_trf,"Table 5.1 row Transformer col A RMSE",value,5.36,,,k1_ladder,
+T51_mae_harx_opt,"Table 5.1 row HAR-RV-X option only col A MAE",value,2.84,,,c2_har,
+T51B_qlike_harx_full,"Table 5.1 row HAR-RV-X all exogenous col B QLIKE",value,0.3108,,,c2_har,daily-return target
+T51B_qlike_trf,"Table 5.1 row Transformer col B QLIKE",value,0.3122,,,k1_ladder,
+T51_best_model,"Section 5.1 text",text,TRUE,,,k1_ladder,the lowest QLIKE at both targets is HAR-RV-X (all exogenous)
+T51_nonmonotone,"Section 5.1 text",text,TRUE,,,k1_ladder,HAR-RV has a higher QLIKE than GJR-GARCH
+T52_dhf_A,"Table 5.2 row Delta_HF col Target A",value,-0.032,,,k2_decomp,
+T52_dinfo_A,"Table 5.2 row Delta_info col Target A",value,0.048,,,k2_decomp,
+T52_darch_A,"Table 5.2 row Delta_arch col Target A",value,-0.024,,,k2_decomp,
+T52_total_A,"Table 5.2 row Total col Target A",value,-0.008,,,k2_decomp,must equal the three components summed
+T52_p_dhf_A,"Table 5.2 row Delta_HF col DM p (A)",value,0.127,,,c4_dm,
+T52_p_dinfo_A,"Table 5.2 row Delta_info col DM p (A)",value,0.011,,,c4_dm,
+T52_p_darch_A,"Table 5.2 row Delta_arch col DM p (A)",value,0.005,,,c4_dm,
+T52_p_total_A,"Table 5.2 row Total col DM p (A)",value,0.645,,,c4_dm,
+T52_dinfo_B,"Table 5.2 row Delta_info col Target B",value,0.079,,,k2_decomp,
+T52_darch_B,"Table 5.2 row Delta_arch col Target B",value,-0.001,,,k2_decomp,
+T52_p_darch_B,"Table 5.2 row Delta_arch col DM p (B)",value,0.926,,,c4_dm,
+T52_additivity,"Section 3.4 text",text,TRUE,,,k2_decomp,the three components sum to the total exactly
+T52_ci_dinfo_A_lo,"Table 5.2 row Delta_info 90% interval lower (A)",value,0.017,,,c6_boot,moving block bootstrap; depends on the random stream
+T52_ci_dinfo_A_hi,"Table 5.2 row Delta_info 90% interval upper (A)",value,0.083,,,c6_boot,moving block bootstrap; depends on the random stream
+CW_stat_full,"Section 5.2 text",value,1.57,,,c5_cw,Clark-West statistic for the full exogenous set
+CW_p_full,"Section 5.2 text",value,0.058,,,c5_cw,
+CW_stat_opt,"Section 5.2 text",value,1.63,,,c5_cw,option variables only
+CW_p_opt,"Section 5.2 text",value,0.052,,,c5_cw,
+T53_dq_trf_gjr,"Table 5.3 row Transformer vs GJR-GARCH col dQLIKE",value,0.008,,,c4_dm,
+T53_p_trf_gjr,"Table 5.3 row Transformer vs GJR-GARCH col p",value,0.645,,,c4_dm,
+T53_dq_trf_harx,"Table 5.3 row Transformer vs HAR-RV-X col dQLIKE",value,0.024,,,c4_dm,
+T53_p_trf_harx,"Table 5.3 row Transformer vs HAR-RV-X col p",value,0.005,,,c4_dm,
+T53_dq_harx_har,"Table 5.3 row HAR-RV-X vs HAR-RV col dQLIKE",value,-0.048,,,c4_dm,
+T53_p_harx_har,"Table 5.3 row HAR-RV-X vs HAR-RV col p",value,0.011,,,c4_dm,
+T54_qlike_lstm_A,"Table 5.4 row LSTM col A QLIKE",value,0.1935,,,k1_ladder,stored ten-seed ensemble
+T54_darch_lstm_A,"Section 5.5 text",value,-0.010,,,k2_decomp,LSTM architecture component at target A
+T54_p_darch_lstm_A,"Section 5.5 text",value,0.113,,,c4_dm,
+T54_trf_vs_lstm,"Section 5.5 text",value,0.014,,,c4_dm,Transformer minus LSTM QLIKE at target A
+T54_p_trf_vs_lstm,"Section 5.5 text",value,0.029,,,c4_dm,
+MCS_qlike_kept,"Section 5.3 text",count,7,,,c7_mcs,models retained at the 90% level under QLIKE
+T55_gjr_top20,"Table 5.5 row GJR-GARCH col Top 20% realized",value,0.423,,,k1_ladder,
+T55_harx_all,"Table 5.5 row HAR-RV-X col All",value,0.183,,,k1_ladder,
+T55_trf_highvix,"Table 5.5 row Transformer col High VIX",value,0.241,,,k1_ladder,
+T55_harx_apr,"Table 5.5 row HAR-RV-X col Mar-May 2025",value,0.519,,,k1_ladder,
+T61_viol_trf,"Table 6.1 row Transformer col Violations",count,3,,,k4_econ,
+T61_viol_gjr,"Table 6.1 row GJR-GARCH col Violations",count,4,,,k4_econ,
+T61_p_kupiec_gjr,"Table 6.1 row GJR-GARCH col Kupiec p",value,0.147,,,k4_econ,
+T61_allpass,"Section 6.1 text",text,TRUE,,,k4_econ,every model passes all three tests at the 5% level
+T62_sharpe_gjr,"Table 6.2 row GJR-GARCH col Sharpe",value,1.88,,,k4_econ,five basis points of cost
+T62_sharpe_harx,"Table 6.2 row HAR-RV-X col Sharpe",value,1.72,,,k4_econ,
+T62_sharpe_trf,"Table 6.2 row Transformer col Sharpe",value,1.61,,,k4_econ,
+T62_sharpe_bh,"Table 6.2 row Buy and hold col Sharpe",value,1.40,,,k4_econ,
+T62_avgw_gjr,"Table 6.2 row GJR-GARCH col Average exposure",value,0.80,,,k4_econ,
+T62_rank_sharpe,"Section 6.2 text",rank,GJR-GARCH;GARCH-X;HAR-RV-X;LSTM;Transformer;HAR-RV,,,k4_econ,ordering by Sharpe at five basis points
+seed_min,"Section 7.1 text",value,0.195,,,k5_repro,lowest single-seed QLIKE of the Transformer
+seed_max,"Section 7.1 text",value,0.258,,,k5_repro,highest single-seed QLIKE
+seed_spread,"Abstract and Section 7.1",value,0.064,,,k5_repro,range across ten seeds
+seed_ens_05,"Section 7.1 text",value,0.2096,,,k5_repro,ensemble of seeds 0-4
+seed_ens_59,"Section 7.1 text",value,0.2101,,,k5_repro,ensemble of seeds 5-9
+seed_ens_all,"Section 7.1 text",value,0.2079,,,k5_repro,ensemble of all ten seeds
+version_shift,"Abstract and Section 7.2",value,0.011,,,k5_repro,change from swapping the deep learning library version
+abs_dinfo,"Abstract",value,0.048,,,k2_decomp,
+abs_darch_sign,"Abstract",sign,-,,,k2_decomp,the architecture component is negative in the evaluation period
+T81_qqq_harx,"Table 8.1 row HAR-GK-X all exogenous col QQQ",value,0.3195,,,r1_asset2,
+T81_spy_harx,"Table 8.1 row HAR-GK-X all exogenous col SPY",value,0.3127,,,r1_asset2,
+T82_dinfo_qqq,"Table 8.2 row Delta_info col QQQ",value,0.052,,,r1_asset2,
+T82_p_dinfo_qqq,"Table 8.2 row Delta_info col DM p (QQQ)",value,0.027,,,r1_asset2,
+T82_dinfo_spy,"Table 8.2 row Delta_info col SPY",value,0.095,,,r1_asset2,
+T82_darch_qqq,"Table 8.2 row Delta_arch col QQQ",value,-0.028,,,r1_asset2,
+T83_qlike_harx_A,"Table 8.3 row HAR-RV-X all exogenous col A QLIKE",value,0.1637,,,r2_holdout,
+T83_qlike_har_A,"Table 8.3 row HAR-RV col A QLIKE",value,0.1964,,,r2_holdout,
+T83_qlike_trf_A,"Table 8.3 row Transformer col A QLIKE",value,0.1478,,,r2_holdout,needs the 2026 network forecasts
+T84_dinfo_A,"Table 8.4 row Delta_info col Target A",value,0.033,,,r2_holdout,
+T84_darch_trf_A,"Table 8.4 row Delta_arch Transformer col Target A",value,0.016,,,r2_holdout,sign reverses against the evaluation period
+T85_har_daily,"Table 8.5 row HAR-RV col Daily expanding",value,0.2318,,,r3_fitscheme,
+T85_harx_daily,"Table 8.5 row HAR-RV-X col Daily expanding",value,0.1826,,,r3_fitscheme,
+T85_harx_roll630,"Table 8.5 row HAR-RV-X col Daily rolling 630",value,0.1887,,,r3_fitscheme,
+T86_dinfo_daily,"Table 8.6 row Evaluation Daily expanding col Delta_info",value,0.049,,,r3_fitscheme,
+T86_darch_daily,"Table 8.6 row Evaluation Daily expanding col Delta_arch",value,-0.025,,,r3_fitscheme,
+T91_wald_g3_h5,"Table 9.1 row G3 Option-implied col Wald h=5",value,430.9,,,r4_granger,
+T91_wald_g5_h5,"Table 9.1 row G5 Interest rates col Wald h=5",value,10.7,,,r4_granger,
+T91_g3_largest,"Section 9.1 text",text,TRUE,,,r4_granger,the option-implied block has the largest Wald statistic
+T92_share_g3,"Table 9.2 row G3 Option-implied col Share",value,26.2,,1,r4_granger,attribution share in percent; needs the trained network
+T92_rank_attr,"Table 9.2 ordering",rank,G3;G1;G4;G2;G6;G5;G7,,,r4_granger,blocks ordered by attribution share
+corr_vix_vix9d,"Section 4.3 text",value,0.975,,,f2_blocks,correlation in log variance form
+VIF_vix_raw,"Section 4.3 text",value,26.9,,,f2_blocks,both implied variances entered directly
+VIF_vix9d_raw,"Section 4.3 text",value,24.6,,,f2_blocks,
+VIF_level,"Section 4.3 text",value,6.3,,,f2_blocks,level and slope parameterization
+VIF_slope,"Section 4.3 text",value,1.6,,,f2_blocks,
+reparam_identical,"Section 4.3 text",text,TRUE,,,f2_blocks,the reparameterization leaves fitted values identical
+corr_raw_returns,"Section 4.3 text",value,0.927,,,f2_blocks,SPY against QQQ raw returns
+corr_rel_return,"Section 4.3 text",value,0.140,,,f2_blocks,SPY against the relative return
+T62_ret_gjr,"Table 6.2 row GJR-GARCH col Annualized return",value,18.9,,100,k4_econ,geometric annualization
+T62_ret_bh,"Table 6.2 row Buy and hold col Annualized return",value,20.7,,100,k4_econ,arithmetic annualization: a different convention from the model rows
