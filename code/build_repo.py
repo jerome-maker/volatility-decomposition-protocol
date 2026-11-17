@@ -62,6 +62,26 @@ component that is positive and significant; neither a Transformer nor an LSTM im
 model with the same inputs; and the architecture component is of the same order as the variation caused
 by the number of random seeds and by the version of the deep learning library.
 
+## Teaching material
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jerome-maker/volatility-decomposition-protocol/blob/main/teaching/volatility_ladder_tutorial.ipynb)
+[![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jerome-maker/volatility-decomposition-protocol/main?labpath=teaching%2Fvolatility_ladder_tutorial.ipynb)
+
+The notebook's first cell clones this repository and installs the pinned packages only when they
+are missing, so it opens and runs on Colab or Binder with nothing added, and does nothing at all
+when run from a local clone (`pip install -r requirements.txt`).
+
+`teaching/volatility_ladder_tutorial.ipynb` walks the whole method up a skill tree, from data
+construction to the decomposition, in Chinese and English side by side. Every technique is covered
+in four layers — principle, formulas, algorithm, program logic — with this study's own data as the
+worked example, and every number the paper reports is re-derived in the notebook and compared with
+the manuscript. The final units give the reproduction report and dissect the project's real bugs.
+
+Of the 109 registered findings, 102 reproduce and 7 are marked not verifiable with the reason
+stated (they need GPU retraining or two versions of the deep learning library); none differ. The
+first pass found one discrepancy and two unstated definitions, all since corrected in the
+manuscript. See `teaching/README.md`.
+
 ## Layout
 
 ```
@@ -69,7 +89,9 @@ code/        every script, from raw data to the final document
 data/        daily derived series, predictor groups, forecast series by model and seed
 results/     all result tables (CSV/JSON) reported in the paper
 figures/     Figure 1-9 as published
+teaching/    bilingual skill-tree tutorial and the reproduction report
 ENVIRONMENT.md   locked software environment, including the two PyTorch builds compared in Section 7
+requirements.txt the six packages the teaching notebook needs, pinned to Environment A
 ```
 
 ## Reproducing the results
@@ -110,10 +132,11 @@ See `CITATION.cff`.
 
 ## Licence
 
-Code: MIT. Data and figures: CC BY 4.0.
+Code: MIT (`LICENSE`). Data and figures: CC BY 4.0 (`LICENSE-DATA.md`).
 """
 open(REPO + 'README.md', 'w', encoding='utf-8').write(readme)
 
+RELEASED = "2026-10-06"          # first public release, not the day this runs
 year = datetime.date.today().year
 open(REPO + 'CITATION.cff', 'w', encoding='utf-8').write(f"""cff-version: 1.2.0
 title: "{TITLE}"
@@ -123,7 +146,7 @@ authors:
   - family-names: Chou
     given-names: Jerome Chih-Lung
     affiliation: "Graduate Institute of Finance, National Taiwan University of Science and Technology"
-    email: jerome.chou@mail.ntust.edu.tw
+    email: jerome.chou@ntust.edu.tw
 keywords:
   - realized volatility
   - forecast evaluation
@@ -132,7 +155,7 @@ keywords:
   - HAR model
   - reproducibility
 license: MIT
-date-released: "{datetime.date.today()}"
+date-released: "{RELEASED}"
 """)
 
 open(REPO + 'LICENSE', 'w', encoding='utf-8').write(f"""MIT License
@@ -158,7 +181,7 @@ The data files and figures in this repository are licensed under CC BY 4.0.
 """)
 
 open(REPO + '.gitignore', 'w', encoding='utf-8').write(
-    "__pycache__/\n*.pyc\n*.parquet\n*.pkl\n*.docx\nrender/\nscratch/\n")
+    "__pycache__/\n*.pyc\n*.parquet\n*.pkl\n*.docx\nrender/\nscratch/\ndesktop.ini\n")
 
 n = sum(len(fs) for _, _, fs in os.walk(REPO))
 sz = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(REPO) for f in fs)

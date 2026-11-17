@@ -205,7 +205,7 @@ GROUPS = json.load(open(find_file("groups.json"), encoding="utf-8"))
 
 print("python     :", sys.version.split()[0])
 print("pandas     :", pd.__version__, "| numpy:", np.__version__)
-print("data       :", DATA)
+print("data       :", DATA.relative_to(DATA.parent.parent))   # relative: an absolute path would publish the author's folder tree
 print("rows       :", len(D), "|", D.index.min().date(), "->", D.index.max().date())
 print("columns    :", list(D.columns))
 """

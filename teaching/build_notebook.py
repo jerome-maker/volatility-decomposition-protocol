@@ -91,6 +91,42 @@ def check_figure_text(nb):
         raise SystemExit(f"{len(bad)} line(s); figure text must be Latin script")
 
 
+# Stored outputs are published too. A cell that prints a Path prints the
+# author's own directory tree, which routinely carries a person's name
+# ("...\supervised students\<name>\..."), and no renderer or reviewer will
+# flag it. Print paths relative to the notebook instead.
+ABS_PATH = re.compile(
+    r"([A-Za-z]:[\/])"                 # windows drive
+    r"|(/(?:home|Users)/)"              # posix home
+)
+
+
+def check_output_paths(nb, extra=()):
+    """Fail if an executed cell's stored output contains an absolute path or a
+    name that should not be published. `extra` holds project-specific strings
+    (a student's name, a client, an unpublished ticker)."""
+    home = str(Path.home())
+    bad = []
+    for i, c in enumerate(nb.cells):
+        if c.cell_type != "code":
+            continue
+        text = ""
+        for o in c.get("outputs", []):
+            text += "".join(o.get("text", ""))
+            text += str(o.get("data", {}).get("text/plain", ""))
+        for hit in [home, *extra]:
+            if hit and hit in text:
+                bad.append((i, f"output contains {hit!r}"))
+        m = ABS_PATH.search(text)
+        if m:
+            bad.append((i, f"output contains an absolute path: {m.group(0)!r}"))
+    if bad:
+        print("\nERROR: executed outputs would publish local paths or names:")
+        for i, why in bad:
+            print(f"  cell {i}: {why}")
+        raise SystemExit(f"{len(bad)} output(s); print paths relative to the notebook")
+    print("outputs : no absolute paths or private names")
+
 def build():
     nb = nbf.v4.new_notebook()
     cells = []
@@ -122,6 +158,7 @@ def execute(path):
                    resources={"metadata": {"path": str(path.parent)}},
                    allow_errors=True).execute()
     nbf.write(nb, path)
+    check_output_paths(nb, extra=[HERE.parent.name])
 
     n = fails = figs = 0
     for c in nb.cells:

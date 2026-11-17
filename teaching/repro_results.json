@@ -24,7 +24,7 @@
   "reported": "1.6",
   "computed": "1.6",
   "status": "reproduced_note",
-  "detail": "same design"
+  "detail": "design inferred: same specification as VIF_level"
  },
  {
   "id": "VIF_vix_raw",
@@ -33,7 +33,7 @@
   "reported": "26.9",
   "computed": "26.9",
   "status": "reproduced_note",
-  "detail": "same design"
+  "detail": "design inferred: same specification as VIF_level"
  },
  {
   "id": "VIF_vix9d_raw",
@@ -42,7 +42,7 @@
   "reported": "24.6",
   "computed": "24.6",
   "status": "reproduced_note",
-  "detail": "same design"
+  "detail": "design inferred: same specification as VIF_level"
  },
  {
   "id": "reparam_identical",
@@ -51,7 +51,7 @@
   "reported": "TRUE",
   "computed": true,
   "status": "reproduced",
-  "detail": "max gap 2.2e-15"
+  "detail": "max gap 1.6e-15"
  },
  {
   "id": "corr_vix_vix9d",

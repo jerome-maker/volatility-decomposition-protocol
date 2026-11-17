@@ -218,9 +218,9 @@ print("\\nmanuscript: level 6.3, slope 1.6, logVIX2 26.9, logVIX9D2 24.6")
 
 match = tab.loc["HAR + option block, estimation sample"]
 reg.check("VIF_level", match.VIF_level, note="design inferred: HAR plus option block, estimation sample")
-reg.check("VIF_slope", match.VIF_slope, note="same design")
-reg.check("VIF_vix_raw", match.VIF_logVIX2, note="same design")
-reg.check("VIF_vix9d_raw", match.VIF_logVIX9D2, note="same design")
+reg.check("VIF_slope", match.VIF_slope, note="design inferred: same specification as VIF_level")
+reg.check("VIF_vix_raw", match.VIF_logVIX2, note="design inferred: same specification as VIF_level")
+reg.check("VIF_vix9d_raw", match.VIF_logVIX9D2, note="design inferred: same specification as VIF_level")
 """
     ),
     code(

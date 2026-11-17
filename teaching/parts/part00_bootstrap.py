@@ -54,23 +54,33 @@ def data_is_reachable(start=None):
 
 
 if data_is_reachable():
-    print(f"data reachable from {Path.cwd()} -- nothing to clone")
+    print(f"data reachable from ./{Path.cwd().name} -- nothing to clone")
 else:
     target = Path.cwd() / REPO.rsplit("/", 1)[-1]
     if not target.is_dir():
         print(f"data not found; cloning {REPO}")
         subprocess.run(["git", "clone", "--depth", "1", REPO, str(target)], check=True)
     os.chdir(target / "teaching")
-    print(f"working directory is now {Path.cwd()}")
+    print(f"working directory is now ./{Path.cwd().parent.name}/{Path.cwd().name}")
 
 missing = [m for m in NEEDED if importlib.util.find_spec(m) is None]
 if not missing:
     print(f"all packages present -- nothing to install ({', '.join(NEEDED)})")
 else:
+    # Install ONLY what is missing, at the pinned version. Passing the whole
+    # requirements file would also re-resolve packages that are already here,
+    # which on the author's own machine means a build can change the very
+    # environment whose versions the file is supposed to record.
     req = Path.cwd().parent / "requirements.txt"
-    args = ["-r", str(req)] if req.is_file() else missing
-    print(f"installing {', '.join(missing)} from {'requirements.txt' if req.is_file() else 'PyPI'}")
-    subprocess.run([sys.executable, "-m", "pip", "install", "-q", *args], check=True)
+    pins = {}
+    if req.is_file():
+        for line in req.read_text(encoding="utf-8").splitlines():
+            line = line.split("#")[0].strip()
+            if "==" in line:
+                pins[line.split("==")[0].strip().lower()] = line
+    spec = [pins.get(m.lower(), m) for m in missing]
+    print(f"installing {', '.join(spec)}")
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", *spec], check=True)
     print("install finished; if an import below fails, restart the kernel and run again")
 """
     ),
