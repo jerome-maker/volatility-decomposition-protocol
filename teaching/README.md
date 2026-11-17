@@ -42,10 +42,33 @@ the deep learning library installed at once; the notebook states exactly what is
 The one differing item from the first pass (the sign of a correlation) and two unstated definitions
 were corrected in the manuscript; unit D2 records how.
 
+## 一鍵執行 / Run it without installing anything
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jerome-maker/volatility-decomposition-protocol/blob/main/teaching/volatility_ladder_tutorial.ipynb)
+[![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jerome-maker/volatility-decomposition-protocol/main?labpath=teaching%2Fvolatility_ladder_tutorial.ipynb)
+
+筆記本第一格會自行處理環境：**找不到資料時**才複製倉庫並切換目錄，**缺套件時**才安裝。
+在自己電腦上執行時兩件事都不會觸發，學生不需要先加任何指令。
+
+The first cell handles the environment by itself: it clones the repository and changes directory
+**only when the data cannot be found**, and installs packages **only when one is missing**. Running
+locally, neither fires, and a student adds nothing.
+
+本機安裝 / Local install:
+
+```bash
+pip install -r requirements.txt
+jupyter lab teaching/volatility_ladder_tutorial.ipynb
+```
+
+套件版本釘在論文 `ENVIRONMENT.md` 的 Environment A，也就是這份筆記本實際執行的版本。
+The pinned versions are Environment A of the paper's `ENVIRONMENT.md`, which is what the notebook
+was executed with.
+
 ## 重新產生 / Rebuilding
 
 ```bash
-pip install nbformat nbclient ipykernel arch
+pip install -r ../requirements.txt nbformat nbclient ipykernel
 python build_notebook.py --execute          # assemble, run every cell, store outputs
 python check_notebook_render.py volatility_ladder_tutorial.ipynb
 python check_reproduction.py findings.csv repro_results.json

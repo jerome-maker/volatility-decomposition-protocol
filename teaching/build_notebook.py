@@ -41,11 +41,12 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 # --- adapt these two -------------------------------------------------------
-from parts import (part0, part1_foundations, part2_core,          # noqa: E402
+from parts import (part00_bootstrap, part0, part1_foundations, part2_core,   # noqa: E402
                    part3_contribution, part4_robustness, part5_report)
 from parts._bilingual import check_bilingual                        # noqa: E402
 
-PARTS = [part0, part1_foundations, part2_core, part3_contribution, part4_robustness, part5_report]
+PARTS = [part00_bootstrap, part0, part1_foundations, part2_core, part3_contribution,
+         part4_robustness, part5_report]
 OUT = HERE / "volatility_ladder_tutorial.ipynb"
 TITLE = "The information ladder in volatility forecasting: a skill-tree tutorial"
 # ---------------------------------------------------------------------------

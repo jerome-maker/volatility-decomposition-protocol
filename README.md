@@ -22,6 +22,13 @@ by the number of random seeds and by the version of the deep learning library.
 
 ## Teaching material
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jerome-maker/volatility-decomposition-protocol/blob/main/teaching/volatility_ladder_tutorial.ipynb)
+[![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jerome-maker/volatility-decomposition-protocol/main?labpath=teaching%2Fvolatility_ladder_tutorial.ipynb)
+
+The notebook's first cell clones this repository and installs the pinned packages only when they
+are missing, so it opens and runs on Colab or Binder with nothing added, and does nothing at all
+when run from a local clone (`pip install -r requirements.txt`).
+
 `teaching/volatility_ladder_tutorial.ipynb` walks the whole method up a skill tree, from data
 construction to the decomposition, in Chinese and English side by side. Every technique is covered
 in four layers — principle, formulas, algorithm, program logic — with this study's own data as the
@@ -42,6 +49,7 @@ results/     all result tables (CSV/JSON) reported in the paper
 figures/     Figure 1-9 as published
 teaching/    bilingual skill-tree tutorial and the reproduction report
 ENVIRONMENT.md   locked software environment, including the two PyTorch builds compared in Section 7
+requirements.txt the six packages the teaching notebook needs, pinned to Environment A
 ```
 
 ## Reproducing the results

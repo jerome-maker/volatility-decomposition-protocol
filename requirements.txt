@@ -1,0 +1,9 @@
+# Environment A of ENVIRONMENT.md: the econometrics and evaluation stack.
+# These are the versions the teaching notebook was executed with; the deep learning
+# models are not retrained in the notebook, so no PyTorch entry belongs here.
+numpy==2.1.3
+pandas==2.2.3
+scipy==1.15.3
+statsmodels==0.14.4
+arch==8.0.0
+matplotlib==3.10.0

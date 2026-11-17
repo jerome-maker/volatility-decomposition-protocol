@@ -27,6 +27,8 @@ FIGS = ['f1_overview.png', 'r1_ladder.png', 'r2_decomp.png', 'r3_pred.png', 'r4_
         'r5_econ.png', 'r7_asset2.png', 'r8_spec.png', 'r6_shap_granger.png']
 for i, f in enumerate(FIGS, 1): shutil.copy(CODE + 'fig/' + f, REPO + f'figures/Figure{i}.png')
 shutil.copy(CODE + 'ENVIRONMENT.md', REPO + 'ENVIRONMENT.md')
+if os.path.isfile(CODE + 'requirements.txt'):
+    shutil.copy(CODE + 'requirements.txt', REPO + 'requirements.txt')
 
 # teaching material and its reproduction report
 TEACH = SRC + 'teaching/'
