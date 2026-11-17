@@ -28,17 +28,19 @@ order of the tree, each opening with what its prerequisites cannot do.
 
 | 狀態 Status | 數量 Count |
 |---|---|
-| 重現 reproduced | 86 |
-| 重現（附註） reproduced with note | 11 |
+| 重現 reproduced | 93 |
+| 重現（附註） reproduced with note | 9 |
 | 無法驗證 not verifiable | 7 |
-| 不一致 differs | 1 |
+| 不一致 differs | 0 |
 
 無法驗證的七項都是需要 GPU 重訓神經網路、或需要同時安裝兩個版本的深度學習套件，
-筆記本裡逐項寫明缺的是什麼。唯一不一致的一項是相關係數的正負號。
+筆記本裡逐項寫明缺的是什麼。第一輪查核找到的一項不一致（相關係數的正負號）與兩處定義未說明，
+作者已在稿件中處理，D2 單元記錄了處理方式。
 
 The seven not-verifiable items all need either GPU retraining of the networks or two versions of
 the deep learning library installed at once; the notebook states exactly what is missing for each.
-The single differing item is the sign of a correlation.
+The one differing item from the first pass (the sign of a correlation) and two unstated definitions
+were corrected in the manuscript; unit D2 records how.
 
 ## 重新產生 / Rebuilding
 
@@ -61,7 +63,7 @@ re-estimated inside it, while the networks' forecasts are read from the stored s
 | 檔案 File | 用途 Purpose |
 |---|---|
 | `volatility_ladder_tutorial.ipynb` | 教材與重現報告（已執行，含輸出） |
-| `findings.csv` | 稿件中每一個可查核數字的登錄簿，105 筆 |
+| `findings.csv` | 稿件中每一個可查核數字的登錄簿，109 筆 |
 | `repro_results.json` | 每一項檢查的結果，由筆記本寫出 |
 | `parts/` | 教材各部分的原始模組；筆記本由它們組裝而成 |
 | `build_notebook.py` | 組裝、執行並檢查圖文的建構程式 |

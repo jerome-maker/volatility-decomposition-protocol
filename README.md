@@ -28,9 +28,10 @@ in four layers — principle, formulas, algorithm, program logic — with this s
 worked example, and every number the paper reports is re-derived in the notebook and compared with
 the manuscript. The final units give the reproduction report and dissect the project's real bugs.
 
-Of the 105 registered findings, 97 reproduce, 7 are marked not verifiable with the reason stated
-(they need GPU retraining or two versions of the deep learning library), and 1 differs. See
-`teaching/README.md`.
+Of the 109 registered findings, 102 reproduce and 7 are marked not verifiable with the reason
+stated (they need GPU retraining or two versions of the deep learning library); none differ. The
+first pass found one discrepancy and two unstated definitions, all since corrected in the
+manuscript. See `teaching/README.md`.
 
 ## Layout
 

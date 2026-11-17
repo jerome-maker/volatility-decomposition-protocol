@@ -168,13 +168,15 @@ plt.show()
             "**為什麼沒被抓到**：兩個數字各自都正確，只有放在同一欄比較時才有問題。"
             "而且 Sharpe 全欄都用算術定義，所以論文的主要論證（排序）不受影響。\n\n"
             "**可帶走的檢查**：守恆／一致性斷言。同一欄的每個數字必須由同一個函數產生；"
-            "若必須由不同程式產生，就把定義當作參數明確傳入。\n\n"
+            "若必須由不同程式產生，就把定義當作參數明確傳入。"
+            "**結局**：作者選擇兩種慣例並列，表 6.2 改為幾何與算術各一欄，讀者自己看得到差距約一個百分點。\n\n"
             "### 案例六：VIF 沒說是在哪個設計下算的（本筆記本在 F2 發現）\n\n"
             "**症狀**：重現 VIF 得到 7.4 與 1.9，稿件是 6.3 與 1.6。\n\n"
             "**根因**：稿件的數字算在「HAR＋選擇權區塊」五變數設計上，"
             "重現時預設用了全部 18 個變數。兩者都正確，但稿件沒寫是哪一個。\n\n"
             "**可帶走的檢查**：把設定列舉出來比對，而不是調整到吻合為止。"
             "吻合的那一個設定就是答案，而「稿件沒寫清楚」本身就是要回報給作者的發現。"
+            "**結局**：稿件已補上設計說明，並把第二個參數化選擇的理由也從相關係數改為 VIF，兩處現在用同一個指標。"
         ),
         en=(
             "### Case 4: an online-first date became the reference year\n\n"
@@ -196,7 +198,7 @@ plt.show()
             "ranking — is unaffected.\n\n"
             "**The transferable check.** A consistency assertion: every number in a column should come from "
             "one function, and where it cannot, the convention should be passed in explicitly as an "
-            "argument.\n\n"
+            "argument. **Outcome:** the author chose to report both, so Table 6.2 now carries a geometric and an arithmetic return column and the reader can see the gap of about one percentage point.\n\n"
             "### Case 6: the VIF design was never stated (found by this notebook in F2)\n\n"
             "**Symptom.** Reproducing the inflation factors gave 7.4 and 1.9 against the manuscript's 6.3 and "
             "1.6.\n\n"
@@ -205,7 +207,7 @@ plt.show()
             "does not say which.\n\n"
             "**The transferable check.** Enumerate the defensible designs and compare, rather than tuning "
             "until something matches. The design that agrees exactly is the answer, and the fact that the "
-            "manuscript did not state it is itself a finding to report to the author."
+            "manuscript did not state it is itself a finding to report to the author. **Outcome:** the manuscript now names the design, and the second parameterization choice is justified with inflation factors too, so both use one measure."
         ),
     ),
     code(

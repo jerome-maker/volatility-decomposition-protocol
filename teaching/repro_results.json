@@ -63,22 +63,40 @@
   "detail": ""
  },
  {
-  "id": "corr_raw_returns",
+  "id": "VIF_rel",
   "location": "Section 4.3 text",
   "kind": "value",
-  "reported": "0.927",
-  "computed": "0.927",
+  "reported": "1.1",
+  "computed": "1.1",
   "status": "reproduced",
   "detail": ""
  },
  {
-  "id": "corr_rel_return",
+  "id": "VIF_own_rel",
   "location": "Section 4.3 text",
   "kind": "value",
-  "reported": "0.140",
-  "computed": "-0.140",
-  "status": "differs",
-  "detail": "|diff|=0.28 > tol=0.0005; the manuscript prints the magnitude; the correlation is negative"
+  "reported": "2.8",
+  "computed": "2.8",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "VIF_raw_qqq",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "7.5",
+  "computed": "7.5",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "VIF_own_raw",
+  "location": "Section 4.3 text",
+  "kind": "value",
+  "reported": "10.1",
+  "computed": "10.1",
+  "status": "reproduced",
+  "detail": ""
  },
  {
   "id": "N_est",
@@ -658,21 +676,39 @@
  },
  {
   "id": "T62_ret_gjr",
-  "location": "Table 6.2 row GJR-GARCH col Annualized return",
+  "location": "Table 6.2 row GJR-GARCH col Return, geometric",
   "kind": "value",
   "reported": "18.9",
   "computed": "18.9",
-  "status": "reproduced_note",
-  "detail": "geometric, as the model rows are"
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T62_ret_gjr_arith",
+  "location": "Table 6.2 row GJR-GARCH col Return, arithmetic",
+  "kind": "value",
+  "reported": "17.7",
+  "computed": "17.7",
+  "status": "reproduced",
+  "detail": ""
  },
  {
   "id": "T62_ret_bh",
-  "location": "Table 6.2 row Buy and hold col Annualized return",
+  "location": "Table 6.2 row Buy and hold col Return, geometric",
+  "kind": "value",
+  "reported": "21.6",
+  "computed": "21.6",
+  "status": "reproduced",
+  "detail": ""
+ },
+ {
+  "id": "T62_ret_bh_arith",
+  "location": "Table 6.2 row Buy and hold col Return, arithmetic",
   "kind": "value",
   "reported": "20.7",
   "computed": "20.7",
-  "status": "reproduced_note",
-  "detail": "matches only under the arithmetic convention; geometric would be 21.6%"
+  "status": "reproduced",
+  "detail": ""
  },
  {
   "id": "T62_rank_sharpe",

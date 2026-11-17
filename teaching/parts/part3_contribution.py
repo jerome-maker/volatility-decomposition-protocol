@@ -380,7 +380,7 @@ reg.check("T51_qlike_garchx", qlike(Y, W["L3 GARCH-X"]).mean(),
             "### 程式設計邏輯\n\n"
             "再平衡用一個明確的迴圈而不是 `resample`：權重在再平衡日之間必須**維持不變**，"
             "寫成迴圈讓這個語意一眼可見。成本以週轉率乘基點計入淨報酬。\n\n"
-            "**這個單元也發現了稿件的一處不一致**，見 D2。"
+            "**這個單元發現了稿件的一處不一致，作者已據此修改**，見 D2。"
         ),
         en=(
             "### Principle\n\n"
@@ -407,7 +407,7 @@ reg.check("T51_qlike_garchx", qlike(Y, W["L3 GARCH-X"]).mean(),
             "Rebalancing is an explicit loop rather than a `resample` call: the weight must be **held "
             "constant** between rebalancing days, and the loop makes that semantics visible. Costs enter the "
             "net return as turnover times basis points.\n\n"
-            "**This unit also uncovered an inconsistency in the manuscript**; see D2."
+            "**This unit uncovered an inconsistency that the author then corrected**; see D2."
         ),
     ),
     code(
@@ -503,9 +503,10 @@ reg.check("T62_sharpe_harx", Pt.loc["L3 HAR-RV-X (full)", "sharpe"])
 reg.check("T62_sharpe_trf", Pt.loc["L4 Transformer", "sharpe"])
 reg.check("T62_sharpe_bh", Pt.loc["Buy and hold", "sharpe"])
 reg.check("T62_avgw_gjr", Pt.loc["L1 GJR-GARCH", "avg_w"])
-reg.check("T62_ret_gjr", Pt.loc["L1 GJR-GARCH", "geo_return"], note="geometric, as the model rows are")
-reg.check("T62_ret_bh", Pt.loc["Buy and hold", "arith_return"],
-          note="matches only under the arithmetic convention; geometric would be %.1f%%" % (Pt.loc["Buy and hold", "geo_return"] * 100))
+reg.check("T62_ret_gjr", Pt.loc["L1 GJR-GARCH", "geo_return"])
+reg.check("T62_ret_gjr_arith", Pt.loc["L1 GJR-GARCH", "arith_return"])
+reg.check("T62_ret_bh", Pt.loc["Buy and hold", "geo_return"])
+reg.check("T62_ret_bh_arith", Pt.loc["Buy and hold", "arith_return"])
 rank_names = {"L1 GJR-GARCH": "GJR-GARCH", "L3 GARCH-X": "GARCH-X", "L3 HAR-RV-X (full)": "HAR-RV-X",
               "L4 LSTM": "LSTM", "L4 Transformer": "Transformer", "L2 HAR-RV": "HAR-RV"}
 reg.check_rank("T62_rank_sharpe", {rank_names[k]: port[k]["sharpe"] for k in rank_names})

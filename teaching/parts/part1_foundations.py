@@ -118,7 +118,7 @@ plt.show()
             "因為是線性變換，迴歸的配適值完全不變，但個別係數變得可解釋、VIF 大幅下降。\n\n"
             "### 程式設計邏輯\n\n"
             "下面同時做三件事：算兩種參數化的 VIF、驗證「配適值完全相同」這個主張、"
-            "並檢查第二標的所用的相對報酬是否真的比原始報酬不相關。"
+            "並用同一個指標檢查第二標的所用的相對報酬：換成原始報酬時，共線性會推高到什麼程度。"
             "注意 VIF 要在**哪一個設計矩陣**下計算會影響數值——這一點稿件沒有寫明，"
             "重現時必須自己找出來，下一格會示範這個過程。"
         ),
@@ -247,14 +247,27 @@ corr_iv = np.corrcoef(X_vv[:, i_lv], X_vv[:, i_sl])[0, 1]
 print(f"corr(log VIX^2, log VIX9D^2) on the estimation sample = {corr_iv:.3f}")
 reg.check("corr_vix_vix9d", corr_iv)
 
+# The same argument for the second application, again in inflation factors rather than
+# correlations: the design is the daily-only predictor set of Section 8.
 dS = pd.read_csv(DATA / "daily_SPY.csv", parse_dates=["Date"]).set_index("Date")
 m = (dS.index >= "2011-01-04") & (dS.index <= "2020-12-31")
-c_raw = dS[m]["r_cc"].corr(D[EST]["r_qqq"].reindex(dS[m].index))
-c_rel = dS[m]["r_cc"].corr(dS[m]["r_rel"])
-print(f"corr(SPY return, QQQ raw return)      = {c_raw:+.3f}   manuscript 0.927")
-print(f"corr(SPY return, relative return)     = {c_rel:+.3f}   manuscript 0.140")
-reg.check("corr_raw_returns", c_raw)
-reg.check("corr_rel_return", c_rel, note="the manuscript prints the magnitude; the correlation is negative")
+daily_cols = [c for c in dS.columns if c not in ("y", "ret_pct")]
+sub2 = dS[m][daily_cols].dropna()
+j_cross, j_own = daily_cols.index("r_rel"), daily_cols.index("r_cc")
+X_rel = sub2.values
+qqq = D["r_qqq"].reindex(sub2.index).values
+fin = np.isfinite(qqq)
+X_raw = X_rel[fin].copy()
+X_raw[:, j_cross] = qqq[fin]                      # swap the relative return for the raw one
+print(f"cross-asset variable as the relative return: VIF {vif(X_rel, j_cross):.2f}, "
+      f"own return {vif(X_rel, j_own):.2f}")
+print(f"cross-asset variable as the raw return     : VIF {vif(X_raw, j_cross):.2f}, "
+      f"own return {vif(X_raw, j_own):.2f}")
+print("manuscript: 1.1 and 2.8 against 7.5 and 10.1")
+reg.check("VIF_rel", vif(X_rel, j_cross))
+reg.check("VIF_own_rel", vif(X_rel, j_own))
+reg.check("VIF_raw_qqq", vif(X_raw, j_cross))
+reg.check("VIF_own_raw", vif(X_raw, j_own))
 """
     ),
     unit_header("F3", "樣本外評估協定", "Out-of-sample protocol",
