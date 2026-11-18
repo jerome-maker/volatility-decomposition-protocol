@@ -34,7 +34,9 @@ DEFAULT_STARS = ((0.01, "***"), (0.05, "**"), (0.10, "*"))
 
 
 def _decimals(s):
-    s = s.strip().lstrip("+-").replace(",", "")
+    # strip the percent sign before counting: "8.1%" has one decimal, not two
+    # (counting "1%" made every percentage's tolerance ten times too tight)
+    s = s.strip().lstrip("+-−").replace(",", "").rstrip("%").strip()
     if "e" in s.lower():
         return None
     return len(s.split(".")[1]) if "." in s else 0
