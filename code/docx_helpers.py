@@ -5,6 +5,25 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 FONT='Microsoft JhengHei'
+# CT_TblPrBase (ECMA-376 Part 1, 17.4.60) allows each tblPr child at most once
+# and fixes their order. python-docx enforces neither when you append, and Word,
+# python-docx and mammoth all read violations without complaint -- the IAJ
+# submission was returned three times over tables that opened fine everywhere
+# locally. Note t.autofit=False already writes a tblLayout, so appending another
+# is how the duplicate arose. Set children through the helper below instead.
+_TBLPR_ORDER=['tblStyle','tblpPr','tblOverlap','bidiVisual','tblStyleRowBandSize',
+    'tblStyleColBandSize','tblW','jc','tblCellSpacing','tblInd','tblBorders',
+    'shd','tblLayout','tblCellMar','tblLook','tblCaption','tblDescription']
+def set_tblPr_child(tblPr,tag,attrs):
+    """Set one tblPr child exactly once, in its schema position."""
+    for e in tblPr.findall(qn(tag)): tblPr.remove(e)
+    el=OxmlElement(tag)
+    for k,v in attrs.items(): el.set(qn(k),v)
+    tblPr.append(el)
+    rank=lambda c:(_TBLPR_ORDER.index(c.tag.split('}')[-1])
+                   if c.tag.split('}')[-1] in _TBLPR_ORDER else len(_TBLPR_ORDER))
+    for child in sorted(list(tblPr),key=rank): tblPr.append(child)
+    return el
 def setfont(run,size=None,bold=None,color=None):
     run.font.name=FONT; run._element.rPr.rFonts.set(qn('w:eastAsia'),FONT)
     if size: run.font.size=Pt(size)
@@ -55,12 +74,10 @@ def table(d,header,rows,widths=None,size=9,highlight_rows=()):
             c.paragraphs[0].alignment=WD_ALIGN_PARAGRAPH.LEFT if j==0 else WD_ALIGN_PARAGRAPH.CENTER
             if i in highlight_rows: shade(c,'FFF4E0')
     if widths:
-        t.autofit=False
+        t.autofit=False                       # python-docx writes a tblLayout here
         tblPr=t._tbl.tblPr
-        lay=OxmlElement('w:tblLayout'); lay.set(qn('w:type'),'fixed'); tblPr.append(lay)
-        tw=OxmlElement('w:tblW'); tw.set(qn('w:w'),str(int(sum(widths)*567))); tw.set(qn('w:type'),'dxa')
-        for e in tblPr.findall(qn('w:tblW')): tblPr.remove(e)
-        tblPr.append(tw)
+        set_tblPr_child(tblPr,'w:tblLayout',{'w:type':'fixed'})
+        set_tblPr_child(tblPr,'w:tblW',{'w:w':str(int(sum(widths)*567)),'w:type':'dxa'})
         grid=t._tbl.tblGrid
         for j,gc in enumerate(grid.findall(qn('w:gridCol'))): gc.set(qn('w:w'),str(int(widths[j]*567)))
         for row in t.rows:
